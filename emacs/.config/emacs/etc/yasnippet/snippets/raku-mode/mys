@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: scalar
+# key: mys
+# --
+my \$$1 = $0;

@@ -1,0 +1,5 @@
+emacs/.config/emacs/*
+!emacs/.config/emacs/etc
+!emacs/.config/emacs/early-init.el
+!emacs/.config/emacs/init.el
+

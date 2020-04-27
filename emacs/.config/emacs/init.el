@@ -34,7 +34,6 @@
 (require 'init-avy)
 
 (require 'init-emms)
-(require 'exwm)
 
 ;; languages
 (require 'init-cl)    ; common lisp

@@ -14,9 +14,10 @@
     (concat "~/Pictures/memes/" (nth index files))))
 
 (setq dashboard-set-heading-icons t
-	  dashboard-set-file-icons    t
+      dashboard-set-file-icons    t
       dashboard-center-content    t
-      dashboard-startup-banner    (random-image))
+      ;; dashboard-startup-banner    (random-image)
+      )
 
 (provide 'init-dashboard)
 

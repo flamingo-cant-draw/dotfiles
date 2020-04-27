@@ -4,7 +4,7 @@
 
 ;;; Code:
 
-(install-packages '(perl6-mode))
+(install-packages '(raku-mode))
 
 (provide 'init-raku)
 

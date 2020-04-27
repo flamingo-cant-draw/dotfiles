@@ -14,7 +14,6 @@
 (require 'ivy)
 (require 'counsel)
 (require 'ivy-rich)
-(require 'ivy-posframe)
 (ivy-mode 1)
 (diminish 'ivy-mode)
 (all-the-icons-ivy-rich-mode 1)

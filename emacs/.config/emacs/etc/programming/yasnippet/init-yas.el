@@ -1,10 +1,15 @@
 ;;; init-yas.el --- snippet completion for Emacs -*- lexical-binding: t -*-
-
+;;; Commentary:
 ;;; Code:
 
 (install-packages '(yasnippet
-		    yasnippet-snippets
-		    common-lisp-snippets))
+					yasnippet-snippets
+					common-lisp-snippets))
+
+(require 'yasnippet)
+
+(setq yas-snippet-dirs (append yas-snippet-dirs
+			       (list (concat user-emacs-directory "etc/programming/yasnippet/snippets"))))
 
 (yas-global-mode 1)
 (yas-reload-all)

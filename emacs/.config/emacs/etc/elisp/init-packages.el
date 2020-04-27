@@ -22,7 +22,11 @@ PACKAGES is the list of packages you want to install."
       (package-install package))))
 
 
-(install-packages '(diminish auto-package-update))
+(install-packages '(diminish auto-package-update no-littering))
+
+;; keep `user-emacs-directory' clean
+;; need to be initalised as early as possible
+(require 'no-littering)
 
 ;; hide base modes from modeline
 (diminish 'eldoc-mode)

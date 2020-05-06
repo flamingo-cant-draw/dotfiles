@@ -15,6 +15,9 @@
 
 (setq-default tab-width 4)
 
+(require 'display-line-numbers)
+(setq display-line-numbers-type 'relative)
+
 (defun formaty ()
   "`indent-region' on the whole buffer and `delete-trailing-whitespce'."
   (interactive)
@@ -40,9 +43,9 @@
      (message "Copied line")
      (list (line-beginning-position) (line-beginning-position 2)))))
 
-
 (add-hook 'prog-mode-hook (lambda ()
 							(display-line-numbers-mode)
+							(column-number-mode)
 							;; the following is to get 'auto-newline' functionality
 							;; (Example:
 							;; {|} + RET --> {

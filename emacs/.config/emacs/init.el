@@ -49,63 +49,10 @@
 ;; Tertiary functionality
 (require 'init-emms)
 (require 'init-which-key)
+(require 'frame-title)
 
 (setq ring-bell-function 'ignore
 	  save-interprogram-paste-before-kill t)
-
-(defmacro file-name-title-setter (file-name title &rest check-extensions)
-  "Macro to help setup the cond statement in `set-frame-title-based-on-buffer'.
-
-FILE-NAME is the name of the file.
-TITLE what you want to set the `frame-title-format' to.
-CHECK-EXTENSIONS is just a list of extensions or file names you want to
-check for(full regex functionality available).
-
-Example:
- This:
-   \(file-name-title-setter \"John.java\" \"Oh no, Java...\" \".java$\")
- Turns into:
-   \((string-match-p (string-join \\='(\".java$\") \"\\|\") \"John.java\")
-    (setq frame-title-format \\='(\"Oh no, Java...\")))"
-  `(list (list 'string-match-p (list 'string-join ''(,@check-extensions) '"\\|") ,file-name)
-		 (list 'setq 'frame-title-format ''(,title))))
-
-(defun set-frame-title-based-on-buffer (&optional func &rest args)
-  "Function to set the `frame-title-format' based on buffer we are in.
-FUNC is the optional function to advise, ARGS is FUNC's arguments."
-  (when func (apply func args))
-
-  (let* ((file-name (buffer-name))
-		 (conditionals (list
-						(file-name-title-setter file-name "Ahh, elisp" ".el$")
-						(file-name-title-setter file-name "🦀🦀🦀 GC is gone 🦀🦀🦀" ".rs$")
-						(file-name-title-setter file-name "The original camel themed language" ".perl$" ".pm$")
-						(file-name-title-setter file-name "Classy" ".java$")
-						(file-name-title-setter file-name "The only gem I need is you ;)" ".rb$" "Gemfile")
-						(file-name-title-setter file-name "C-ing is the easiest way to know what you're doing" ".c$")
-						(file-name-title-setter file-name "Getting ahead?" ".h$")
-						(file-name-title-setter file-name "Stylish" ".css$" ".scss$" ".sass$")
-						(file-name-title-setter file-name "<tag>You're it</tag>" ".html$")
-						(file-name-title-setter file-name "Oh god, oh fuck." ".js$" ".mjs$")
-						'(t (setq frame-title-format '("%b"))))))
-    (eval `(cond ,@conditionals))))
-
-(advice-add #'other-window                  :around #'set-frame-title-based-on-buffer)
-(advice-add #'counsel-switch-buffer         :around #'set-frame-title-based-on-buffer)
-(advice-add #'find-file                     :around #'set-frame-title-based-on-buffer)
-(advice-add #'previous-buffer               :around #'set-frame-title-based-on-buffer)
-(advice-add #'next-buffer                   :around #'set-frame-title-based-on-buffer)
-(advice-add #'quit-window                   :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-1         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-2         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-3         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-4         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-5         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-6         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-7         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-8         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-9         :around #'set-frame-title-based-on-buffer)
-(advice-add #'winum-select-window-by-number :around #'set-frame-title-based-on-buffer)
 
 (global-set-key "\C-z" nil)
 
@@ -113,6 +60,8 @@ FUNC is the optional function to advise, ARGS is FUNC's arguments."
 (setq-default ispell-extra-args '("--sug-mode=ultra"
 								  "--lang=en_GB"
 								  "--camel-case"))
+
+(exec-path-from-shell-initialize)
 
 (provide 'init)
 

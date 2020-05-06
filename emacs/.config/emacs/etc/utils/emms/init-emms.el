@@ -19,7 +19,7 @@
 (setq mpc-host "localhost:6600")
 
 (global-set-key (kbd "C-c m c") #'emms-player-mpd-connect)
-(global-set-key (kbd "C-c m p") #'emms)
+(global-set-key (kbd "C-c m p") #'emms-player-mpd-pause)
 (global-set-key (kbd "C-c m r") #'emms-player-mpd-update-all-reset-cache)
 (global-set-key (kbd "C-c m b") #'emms-smart-browse)
 

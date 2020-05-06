@@ -1,34 +1,26 @@
-;;; init-lsp.el --- language server setup -*- lexical-binding: t -*-
-
+;;; init-lsp.el --- -*- lexical-binding: t -*-
 ;;; Commentary:
-
 ;; Language server setup.
-
 ;;; Code:
 
 (install-packages '(lsp-mode
-		    lsp-ui
-		    company-lsp
-		    lsp-java
-		    lsp-treemacs
-		    dap-mode))
+					lsp-ui
+					lsp-java
+					lsp-treemacs
+					dap-mode))
 
 (require 'lsp-mode)
 (require 'lsp-ui)
 
-(defvar lsp-modes
-  (list 'ruby-mode-hook 'rust-mode-hook
-	'python-mode-hook 'd-mode-hook 'java-mode-hook)
-  "Modes where we want to enable `lsp-mode'.")
-
-(dolist (mode lsp-modes)
-  (add-hook mode #'lsp))
+(let ((lsp-modes '(ruby-mode-hook rust-mode-hook python-mode-hook java-mode-hook)))
+  (dolist (mode lsp-modes)
+	(add-hook mode #'lsp)))
 
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
-(require 'company-lsp)
-(add-to-list 'company-lsp-filter-candidates '(lsp-emmy-lua . t))
+(require 'lsp-rust)
+(setq lsp-prefer-capf t)
 
 ;; debugging protocall
 (require 'dap-mode)

@@ -51,8 +51,9 @@
 (require 'init-which-key)
 (require 'frame-title)
 
-(setq ring-bell-function 'ignore
-	  save-interprogram-paste-before-kill t)
+;; config stuff I haven't found a place to put yet
+(setq ring-bell-function 'ignore             ; don't play a noise whenever C-g is pressed
+	  save-interprogram-paste-before-kill t) ; save what's in the clipboard to kill-ring before overriding it
 
 (global-set-key "\C-z" nil)
 
@@ -61,6 +62,7 @@
 								  "--lang=en_GB"
 								  "--camel-case"))
 
+(install-packages '(exec-path-from-shell))
 (exec-path-from-shell-initialize)
 
 (provide 'init)

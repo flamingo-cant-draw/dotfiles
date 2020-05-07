@@ -4,7 +4,8 @@
 
 ;;; Code:
 
-(install-packages '(emms))
+(install-packages '(emms
+					emms-mode-line-cycle))
 
 (require 'emms-setup)
 (require 'emms-player-mpd)
@@ -17,6 +18,10 @@
 (setq emms-player-mpd-server-name "localhost")
 (setq emms-player-mpd-server-port "6600")
 (setq mpc-host "localhost:6600")
+
+(emms-mode-line 1)
+(emms-playing-time 1)
+(emms-mode-line-cycle 1)
 
 (global-set-key (kbd "C-c m c") #'emms-player-mpd-connect)
 (global-set-key (kbd "C-c m p") #'emms-player-mpd-pause)

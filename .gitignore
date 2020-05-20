@@ -1,3 +1,4 @@
+*.elc
 emacs/.config/emacs/*
 !emacs/.config/emacs/etc
 !emacs/.config/emacs/early-init.el

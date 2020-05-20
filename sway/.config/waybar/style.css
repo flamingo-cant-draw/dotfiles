@@ -1,70 +1,68 @@
 * {
-    border: none;
+    border:        none;
     border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Hack, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    min-height: 0;
+    font-family:   Hack, Roboto, Helvetica, Arial, sans-serif;
+    font-size:     13px;
+    min-height:    0;
 }
 
 window#waybar {
-	background-color: transparent;
-    color: #EEE;
+	background-color:    transparent;
+    color:               #EEE;
     transition-property: background-color;
     transition-duration: .5s;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
+window#waybar.hidden { opacity: 0.2; }
 
 #window {
-	padding: 0 0.75em;
-	background-color: rgba(29, 37, 44, 0.2);;
-	border-bottom: 3px solid rgba(24, 30, 36, 0.5);
-	border-radius: 0.75em;
+	padding:          0 0.75em;
+	background-color: #1d252c;
+	border-top:       1px solid #151d20;
+	border-right:     1px solid #151d20;
+	border-left:      1px solid #151d20;
+    border-bottom:    4px solid #151d20;
+	border-radius:    0.75em;
 }
 
-#window.empty {
-    background-color: transparent;
-}
-
-#workspaces {
-	margin-left: 0.5em;
-}
+#workspaces { margin-left: 0.5em; }
 
 #workspaces button {
-    padding: 0 0.75em;
-	margin-right: 1em;
-    background-color: rgba(29, 37, 44, 0.2);
-    color: #EEE;
-    border-bottom: 3px solid rgba(24, 30, 36, 0.5);
-	border-left: 3px solid rgba(24, 30, 36, 0.5);
-	border-radius: 0.75em;
+    padding:          0 0.75em;
+	margin-right:     1em;
+    background-color: #1d252c;
+    color:            #EEE;
+	border-top:       1px solid #151d20;
+	border-right:     1px solid #151d20;
+	border-left:      4px solid #151d20;
+    border-bottom:    4px solid #151d20;
+	border-radius:    0.75em;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(29, 37, 44, 0.2);;
-    box-shadow: inherit;
-	text-shadow: inherit;
-    border-bottom: 3px solid #EEE;
-	border-left: 3px solid #EEE;
+    background:    #1d252c;
+    box-shadow:    inherit;
+	text-shadow:   inherit;
+	border-top:    1px solid #EEE;
+	border-right:  1px solid #EEE;
+	border-left:   4px solid #EEE;
+    border-bottom: 4px solid #EEE;
 }
 
 #workspaces button.focused {
-    background-color: rgba(100, 114, 125, 0.6);
-    border-bottom: 3px solid #EEE;
-	border-left: 3px solid #EEE;
+	background:    #1d252c;
+	border-top:    1px solid #EEE;
+	border-right:  1px solid #EEE;
+	border-left:   4px solid #EEE;
+    border-bottom: 4px solid #EEE;
 }
 
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
+#workspaces button.urgent { background-color: #eb4d4b; }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #EEE;
+	background-color: #64727D;
+	border-bottom: 3px solid #EEE;
 }
 
 #clock,
@@ -80,27 +78,17 @@ window#waybar.hidden {
 #mode,
 #idle_inhibitor,
 #mpd {
-    margin: 0 0.25em;
-    color: #EEE;
-	padding: 0 0.75em;
+    margin:        0 0.25em;
+    color:         #EEE;
+	padding:       0 0.75em;
 	border-radius: 0.75em;
-	border-bottom: 3px solid rgba(24, 30, 36, 0.5);
-	border-right: 3px solid rgba(24, 30, 36, 0.5);
+	border-top:    1px solid rgba(24, 30, 36, 0.5);
+	border-right:  4px solid rgba(24, 30, 36, 0.5);
+	border-left:   1px solid rgba(24, 30, 36, 0.5);
+	border-bottom: 4px solid rgba(24, 30, 36, 0.5);
 }
 
-#clock {
-    background-color: #64727D;
-}
-
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
+#clock { background-color: #64727D; }
 
 @keyframes blink {
     to {
@@ -109,40 +97,20 @@ window#waybar.hidden {
     }
 }
 
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
-}
+label:focus { background-color: #000000; }
 
 #cpu {
     background-color: #2ecc71;
     color: #000000;
 }
 
-#memory {
-    background-color: #9b59b6;
-}
+#memory { background-color: #9b59b6; }
 
-#backlight {
-    background-color: #90b1b1;
-}
+#backlight { background-color: #90b1b1; }
 
-#network {
-    background-color: #2980b9;
-}
+#network { background-color: #2980b9; }
 
-#network.disconnected {
-    background-color: #f53c3c;
-}
+#network.disconnected { background-color: #f53c3c; }
 
 #pulseaudio {
     background-color: #f1c40f;
@@ -160,29 +128,17 @@ label:focus {
     min-width: 100px;
 }
 
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
+#custom-media.custom-spotify { background-color: #66cc99; }
 
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
+#custom-media.custom-vlc { background-color: #ffa000; }
 
-#temperature {
-    background-color: #f0932b;
-}
+#temperature { background-color: #f0932b; }
 
-#temperature.critical {
-    background-color: #eb4d4b;
-}
+#temperature.critical { background-color: #eb4d4b; }
 
-#tray {
-    background-color: #2980b9;
-}
+#tray { background-color: #2980b9; }
 
-#idle_inhibitor {
-    background-color: #2d3436;
-}
+#idle_inhibitor { background-color: #2d3436; }
 
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
@@ -194,14 +150,8 @@ label:focus {
     color: #2a5c45;
 }
 
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
+#mpd.disconnected { background-color: #f53c3c; }
 
-#mpd.stopped {
-    background-color: #90b1b1;
-}
+#mpd.stopped { background-color: #90b1b1; }
 
-#mpd.paused {
-    background-color: #51a37a;
-}
+#mpd.paused { background-color: #51a37a; }

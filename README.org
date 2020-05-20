@@ -1,0 +1,8 @@
+* Dotfiles
+My config files for various software.
+
+To install something just use [[https://www.gnu.org/software/stow/][=stow=]] like this:
+#+BEGIN_SRC shell
+stow <package_name> -t ~
+#+END_SRC
+

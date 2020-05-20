@@ -4,10 +4,8 @@
 
 ;;; Code:
 
-;; add emacs-config-dir/elisp to the load-path (this is where all
-;; the init-* files are)
-(add-to-list 'load-path (concat user-emacs-directory "etc/elisp"))
-(dolist (dir '("langs/" "general/" "utils/" "programming/"))
+;; add emacs-config-dir/elisp to the load-path (this is where all the init-* files are)
+(dolist (dir '("general/" "langs/"  "programming/" "utils/"))
   (let ((default-directory (concat user-emacs-directory "etc/" dir)))
 	(normal-top-level-add-subdirs-to-load-path)))
 
@@ -49,7 +47,8 @@
 ;; Tertiary functionality
 (require 'init-emms)
 (require 'init-which-key)
-(require 'frame-title)
+(require 'init-frame-title)
+(require 'init-toolbar)
 
 ;; config stuff I haven't found a place to put yet
 (setq ring-bell-function 'ignore             ; don't play a noise whenever C-g is pressed

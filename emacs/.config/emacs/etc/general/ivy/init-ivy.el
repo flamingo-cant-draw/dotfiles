@@ -5,18 +5,17 @@
 ;;; Code:
 
 (install-packages '(ivy
-		    counsel
-		    swiper
-		    ivy-rich
-		    all-the-icons-ivy-rich
-		    flyspell-correct-ivy))
+					counsel
+					swiper
+					ivy-rich
+					all-the-icons-ivy-rich
+					flyspell-correct-ivy))
 
 (require 'ivy)
 (require 'counsel)
 (require 'ivy-rich)
 (ivy-mode 1)
 (diminish 'ivy-mode)
-(all-the-icons-ivy-rich-mode 1)
 (ivy-rich-mode 1)
 
 (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)

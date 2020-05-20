@@ -18,15 +18,24 @@ PACKAGES is the list of packages you want to install."
   (dolist (package packages)
     (unless (package-installed-p package)
       (unless package-archive-contents
-		(package-refresh-contents))
+	(package-refresh-contents))
       (package-install package))))
-
 
 (install-packages '(diminish auto-package-update no-littering))
 
 ;; keep `user-emacs-directory' clean
 ;; need to be initalised as early as possible
 (require 'no-littering)
+
+;; Add packages not installed with package.el to load-path
+(defvar init-site-lisp-path (concat no-littering-var-directory "site-lisp/")
+  "The path to the site-lisp directory.
+This is where non-package.el packages are installed to.")
+
+(let ((default-directory init-site-lisp-path))
+  (unless (file-directory-p init-site-lisp-path)
+    (mkdir init-site-lisp-path t))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;; hide base modes from modeline
 (diminish 'eldoc-mode)
@@ -35,7 +44,7 @@ PACKAGES is the list of packages you want to install."
 (require 'auto-package-update)
 
 (setq auto-package-update-last-update-day-filename
-	  (concat user-emacs-directory "var/last-package-update-day"))
+      (concat user-emacs-directory "var/last-package-update-day"))
 
 (auto-package-update-at-time "18:00")
 

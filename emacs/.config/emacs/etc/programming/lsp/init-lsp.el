@@ -7,7 +7,8 @@
 					lsp-ui
 					lsp-java
 					lsp-treemacs
-					dap-mode))
+					dap-mode
+					ccls))
 
 (require 'lsp-mode)
 (require 'lsp-ui)

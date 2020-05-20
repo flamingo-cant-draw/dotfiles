@@ -8,8 +8,6 @@
 
 (setq winum-keymap
       (let ((map (make-sparse-keymap)))
-	(define-key map (kbd "C-`") 'winum-select-window-by-number)
-	(define-key map (kbd "C-²") 'winum-select-window-by-number)
 	(define-key map (kbd "M-0") 'treemacs-select-window)
 	(define-key map (kbd "M-1") 'winum-select-window-1)
 	(define-key map (kbd "M-2") 'winum-select-window-2)
@@ -22,7 +20,6 @@
 	map))
 
 (require 'winum)
-
 (winum-mode)
 
 (provide 'init-winum)

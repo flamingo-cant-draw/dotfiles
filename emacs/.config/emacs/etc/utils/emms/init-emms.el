@@ -1,27 +1,22 @@
 ;;; init-emms.el --- control music from within emacs -*- lexical-binding: t -*-
-
 ;;; Commentary:
-
 ;;; Code:
 
-(install-packages '(emms
-					emms-mode-line-cycle))
+(unless (file-directory-p (concat init-site-lisp-path "emms-5.4/"))
+  (shell-command (concat "wget -qO- ftp://ftp.gnu.org/gnu/emms/emms-5.4.tar.gz | tar -zxvf - -C "
+						 user-emacs-directory
+						 "var/site-lisp/")))
 
 (require 'emms-setup)
 (require 'emms-player-mpd)
 (require 'mpc)
 (emms-all)
 
-;; (setq emms-player-list '(emms-player-vlc emms-player-vlc-playlist emms-player-mpg321 emms-player-ogg123 emms-player-mplayer emms-player-mplayer-playlist))
-(setq emms-player-list '(emms-player-mpd))
-(setq emms-info-functions '(emms-info-mpd))
-(setq emms-player-mpd-server-name "localhost")
-(setq emms-player-mpd-server-port "6600")
-(setq mpc-host "localhost:6600")
-
-(emms-mode-line 1)
-(emms-playing-time 1)
-(emms-mode-line-cycle 1)
+(setq emms-player-list '(emms-player-mpd)
+	  emms-info-functions '(emms-info-mpd)
+	  emms-player-mpd-server-name "localhost"
+	  emms-player-mpd-server-port "6600"
+	  mpc-host "localhost:6600")
 
 (global-set-key (kbd "C-c m c") #'emms-player-mpd-connect)
 (global-set-key (kbd "C-c m p") #'emms-player-mpd-pause)

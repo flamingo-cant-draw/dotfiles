@@ -5,11 +5,11 @@
 ;;; Code:
 
 (require 'files)
+(require 'no-littering)
 
 ;; set up proper backup
 (setq
  backup-by-copying      t
- auto-save-file-name-transforms `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))
  delete-old-versions    t
  kept-new-versions      6
  kept-old-versions      2)

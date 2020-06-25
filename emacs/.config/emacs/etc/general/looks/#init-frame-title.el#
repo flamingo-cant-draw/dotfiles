@@ -44,7 +44,6 @@ FUNC is an optional function to advise, ARGS is FUNC's arguments."
 	       (file-name-title "Stylish" ".css$" ".scss$" ".sass$")
 	       (file-name-title "<tag>You're it</tag>" ".html$")
 	       (file-name-title "Oh god, oh fuck." ".js$" ".mjs$")
-	       (file-name-title "Treemacs" "Treemacs")
 	       '(t (setq frame-title-format '("%b"))))))
 	(eval `(cond ,@conditionals))))))
 
@@ -65,8 +64,7 @@ FUNC is an optional function to advise, ARGS is FUNC's arguments."
 (advice-add #'winum-select-window-8         :around #'init-set-title-based-on-buffer)
 (advice-add #'winum-select-window-9         :around #'init-set-title-based-on-buffer)
 (advice-add #'winum-select-window-by-number :around #'init-set-title-based-on-buffer)
-(advice-add #'treemacs                      :around #'init-set-title-based-on-buffer)
-(advice-add #'Buffer-menu-this-window       :around #'init-set-title-based-on-buffer)
+advice-add #'treemacs                      :around #'init-set-title-based-on-buffer
 
 
 (provide 'init-frame-title)

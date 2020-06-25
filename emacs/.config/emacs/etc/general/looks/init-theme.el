@@ -1,45 +1,60 @@
 ;;; init-theme.el --- -*- lexical-binding: t -*-
 
-;;; Commentary:
+;; This file is not part of GNU Emacs
 
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 3, or (at your option)
+;; any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; For a full copy of the GNU General Public License
+;; see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
 ;;; Code:
 
 ;; install colour and modeline theme
-(install-packages '(doom-modeline
-					doom-themes
-					highlight-numbers
-					hl-todo		 ; highlight todo, fixme etc. comments
-					;; highlight-indent-guides
-					))
+(install-packages '(all-the-icons
+		    kaolin-themes
+		    highlight-numbers
+		    highlight-indent-guides
+		    hl-todo		 ; highlight todo, fixme etc. comments
+		    ))
 
 (set-frame-font "Hack 11" nil t)
 
-(load-theme 'doom-city-lights t)
-(doom-themes-treemacs-config)
 
-;; (require 'kaolin-themes)
-;; (setq kaolin-themes-modeline-border t
-;; 	  kaolin-themes-underline-wave nil)
+(require 'highlight-indent-guides)
+(setq highlight-indent-guides-method 'character
+      highlight-indent-guides-responsive 'stack)
 
-;; (load-theme 'kaolin-galaxy t)
-;; (kaolin-treemacs-theme)
-(doom-modeline-mode 1)
+(diminish #'highlight-indent-guides-mode)
 
-;; `highlight-indent-guides-mode' is great, but it just makes scrolling through a file with
-;; `C-n' and `C-p' to laggy
-;; (require 'highlight-indent-guides)
-;; (setq highlight-indent-guides-method 'bitmap
-;; 	  highlight-indent-guides-responsive nil)
+;; Broken on wayland :(
+;; does work on pure-gtk branch though
+;; (set-frame-parameter (selected-frame) 'alpha 98)
 
-(add-hook 'prog-mode-hook (lambda ()
-							(highlight-numbers-mode)
-							;; (highlight-indent-guides-mode)
-							(hl-todo-mode)))
+(require 'kaolin-themes)
 
-(diminish 'highlight-indent-guides-mode)
+(setq kaolin-themes-italic-comments t
+      kaolin-themes-underline-wave nil
+      kaolin-themes-modeline-border nil)
 
-;; highlight the current line
-(global-hl-line-mode)
+;; (load-theme 'kaolin-aurora t)
+(load-theme 'gotham t)
+(kaolin-treemacs-theme)
+
+(add-hook 'prog-mode-hook #'highlight-numbers-mode)
+(add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
+(add-hook 'prog-mode-hook #'hl-todo-mode)
+(add-hook 'prog-mode-hook #'hl-line-mode)
+
+(add-hook 'text-mode-hook #'hl-line-mode)
 
 (provide 'init-theme)
 

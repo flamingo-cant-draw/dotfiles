@@ -27,6 +27,11 @@ PACKAGES is the list of packages you want to install."
 ;; need to be initalised as early as possible
 (require 'no-littering)
 
+;; Pin packages, packages that we want to be installed form a specific repository
+(setq package-pinned-packages
+      '((emms . "gnu")
+	(peg . "gnu")))
+
 ;; Add packages not installed with package.el to load-path
 (defvar init-site-lisp-path (concat no-littering-var-directory "site-lisp/")
   "The path to the site-lisp directory.

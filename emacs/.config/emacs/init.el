@@ -7,17 +7,19 @@
 ;; add emacs-config-dir/elisp to the load-path (this is where all the init-* files are)
 (dolist (dir '("general/" "langs/"  "programming/" "utils/"))
   (let ((default-directory (concat user-emacs-directory "etc/" dir)))
-	(normal-top-level-add-subdirs-to-load-path)))
+    (normal-top-level-add-subdirs-to-load-path)))
 
 ;; Set up packages
 (require 'init-packages)
+
+(setq gc-cons-threshold 67108864)
 
 ;; Pretty Emacs
 (require 'init-theme)
 (require 'init-dashboard)
 
 ;; File stuff
-(require 'init-files)    ; dired stuff is also here
+(require 'init-files)
 (require 'init-dired)
 (require 'init-treemacs)
 
@@ -35,14 +37,14 @@
 (require 'init-yas)
 
 ;; Languages
-(require 'init-cl)    ; common lisp
+(require 'init-cl)			; common lisp
 (require 'init-d)
 (require 'init-java)
 (require 'init-org)
 (require 'init-perl)
-(require 'init-raku)  ; what perl6 got renamed to
+(require 'init-raku)			; what perl6 got renamed to
 (require 'init-rust)
-(require 'init-web)   ; html, css, javascript etc.
+(require 'init-web)			; html, css, javascript etc.
 
 ;; Tertiary functionality
 (require 'init-emms)
@@ -52,14 +54,14 @@
 
 ;; config stuff I haven't found a place to put yet
 (setq ring-bell-function 'ignore             ; don't play a noise whenever C-g is pressed
-	  save-interprogram-paste-before-kill t) ; save what's in the clipboard to kill-ring before overriding it
+      save-interprogram-paste-before-kill t) ; save what's in the clipboard to kill-ring before overriding it
 
-(global-set-key "\C-z" nil)
+(global-unset-key "\C-z")
 
 (setq ispell-program-name "aspell")
 (setq-default ispell-extra-args '("--sug-mode=ultra"
-								  "--lang=en_GB"
-								  "--camel-case"))
+				  "--lang=en_GB"
+				  "--camel-case"))
 
 (install-packages '(exec-path-from-shell))
 (exec-path-from-shell-initialize)

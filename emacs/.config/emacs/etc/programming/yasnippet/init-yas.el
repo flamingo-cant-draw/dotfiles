@@ -3,17 +3,17 @@
 ;;; Code:
 
 (install-packages '(yasnippet
-					yasnippet-snippets
-					common-lisp-snippets))
+		    yasnippet-snippets
+		    common-lisp-snippets))
 
 (require 'yasnippet)
-
 (setq yas-snippet-dirs (append yas-snippet-dirs
 			       (list (concat user-emacs-directory "etc/programming/yasnippet/snippets"))))
 
-(yas-global-mode 1)
-(yas-reload-all)
+(yas-global-mode)
 
+(with-eval-after-load 'yasnippet
+  (yas-reload-all))
 (diminish 'yas-minor-mode)
 
 (provide 'init-yas)

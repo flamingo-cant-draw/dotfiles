@@ -15,7 +15,7 @@ window#waybar.hidden { opacity: 0.2; }
 
 #window {
 	padding:          0 0.75em;
-	background-color: #1d252c;
+	background-color: rgba(29, 37, 44, 236);
 	border-top:       1px solid #181e24;
 	border-right:     1px solid #181e24;
 	border-left:      1px solid #181e24;
@@ -28,7 +28,7 @@ window#waybar.hidden { opacity: 0.2; }
 #workspaces button {
   padding:          0 0.75em;
 	margin-right:     1em;
-  background-color: #1d252c;
+  background-color: rgba(29, 37, 44, 236);
   color:            #EEE;
 	border-top:       1px solid #181e24;
 	border-right:     1px solid #181e24;
@@ -39,7 +39,7 @@ window#waybar.hidden { opacity: 0.2; }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-  background:    #1d252c;
+  background:    rgba(29, 37, 44, 236);
   box-shadow:    inherit;
 	text-shadow:   inherit;
 	border-top:    1px solid #EEE;
@@ -49,7 +49,7 @@ window#waybar.hidden { opacity: 0.2; }
 }
 
 #workspaces button.focused {
-	background:    #1d252c;
+	background:    rgba(29, 37, 44, 236);
 	border-top:    1px solid #EEE;
 	border-right:  1px solid #EEE;
 	border-left:   4px solid #EEE;
@@ -78,7 +78,7 @@ window#waybar.hidden { opacity: 0.2; }
 #mpd {
   margin:           0 0.25em;
 	padding:          0 0.75em;
-	background-color: #1d252c;
+	background-color: rgba(29, 37, 44, 236);
 	border-radius:    0.75em;
 	border-top:       1px solid #181e24;
 	border-left:      1px solid #181e24;

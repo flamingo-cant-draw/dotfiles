@@ -15,7 +15,7 @@
 (setq gc-cons-threshold 67108864)
 
 ;; Pretty Emacs
-(require 'init-theme)
+(require 'init-looks)
 (require 'init-dashboard)
 
 ;; File stuff
@@ -50,7 +50,7 @@
 (require 'init-emms)
 (require 'init-which-key)
 (require 'init-frame-title)
-(require 'init-toolbar)
+;; (require 'init-toolbar)
 
 ;; config stuff I haven't found a place to put yet
 (setq ring-bell-function 'ignore             ; don't play a noise whenever C-g is pressed

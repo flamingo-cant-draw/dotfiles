@@ -1,4 +1,4 @@
-;;; init-theme.el --- -*- lexical-binding: t -*-
+;;; init-looks.el ---  -*- lexical-binding: t -*-
 
 ;; This file is not part of GNU Emacs
 
@@ -18,36 +18,26 @@
 ;;; Commentary:
 ;;; Code:
 
-;; install colour and modeline theme
 (install-packages '(all-the-icons
-		    kaolin-themes
 		    highlight-numbers
 		    highlight-indent-guides
 		    hl-todo		 ; highlight todo, fixme etc. comments
 		    ))
 
-(set-frame-font "Hack 11" nil t)
+(add-to-list 'custom-theme-load-path
+	     (concat user-emacs-directory "etc/general/looks/"))
 
+(load-theme 'vibin t)
+
+(set-frame-font "Hack 11" nil t)
 
 (require 'highlight-indent-guides)
 (setq highlight-indent-guides-method 'character
       highlight-indent-guides-responsive 'stack)
 
+(add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
+
 (diminish #'highlight-indent-guides-mode)
-
-;; Broken on wayland :(
-;; does work on pure-gtk branch though
-;; (set-frame-parameter (selected-frame) 'alpha 98)
-
-(require 'kaolin-themes)
-
-(setq kaolin-themes-italic-comments t
-      kaolin-themes-underline-wave nil
-      kaolin-themes-modeline-border nil)
-
-;; (load-theme 'kaolin-aurora t)
-(load-theme 'gotham t)
-(kaolin-treemacs-theme)
 
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)
 (add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
@@ -56,6 +46,6 @@
 
 (add-hook 'text-mode-hook #'hl-line-mode)
 
-(provide 'init-theme)
+(provide 'init-looks)
 
-;;; init-theme.el ends here
+;;; init-looks.el ends here

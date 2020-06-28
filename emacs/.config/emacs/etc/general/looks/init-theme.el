@@ -45,8 +45,7 @@
       kaolin-themes-underline-wave nil
       kaolin-themes-modeline-border nil)
 
-;; (load-theme 'kaolin-aurora t)
-(load-theme 'gotham t)
+(load-theme 'kaolin-aurora t)
 (kaolin-treemacs-theme)
 
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)

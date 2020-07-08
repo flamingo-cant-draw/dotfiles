@@ -12,7 +12,7 @@
 (setq lsp-rust-analyzer-server-command '("~/.cargo/bin/rust-analyzer"))
 
 (add-hook 'rustic-mode-hook (lambda ()
-							  (setq-local indent-tabs-mode nil)))
+			      (setq-local indent-tabs-mode nil)))
 
 (provide 'init-rust)
 

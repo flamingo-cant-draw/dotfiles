@@ -1,30 +1,9 @@
 :root {
-    --mbarstyler-popout-pixels: 3px; /* [0px - 7px] */
+    --backhground-colour: #1d252c;
 }
 
-/* Compute new position, width, and padding */
-#urlbar[breakout][breakout-extend] {
-    top: calc(5px - var(--mbarstyler-popout-pixels)) !important;
-    left: calc(0px - var(--mbarstyler-popout-pixels)) !important;
-    width: calc(100% + (2 * var(--mbarstyler-popout-pixels))) !important;
-    padding: var(--mbarstyler-popout-pixels) !important;
-}
-
-[uidensity="compact"] #urlbar[breakout][breakout-extend] {
-    top: calc(3px - var(--mbarstyler-popout-pixels)) !important;
-}
-
-/* Clean up extra spacing at the top and bottom */
-#urlbar-results {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-}
-
-#treestyletab_piro_sakura_ne_jp-browser-action,
-#sidebar-button,
-#sidebar-header,
 #TabsToolbar,
-#library-button {
+#sidebar-header {
 	visibility: collapse !important;
 }
 
@@ -35,20 +14,9 @@
 	border: none !important;
 }
 
-/* DevTools Style Editor: Highlight edited files */
-/* For DevTools, add to userContent.css */
-/* For Browser Toolbox, add to /chrome_debugger_profile/chrome/userChrome.css */
-@-moz-document url("chrome://devtools/content/styleeditor/index.xul"){
-    .splitview-nav .unsaved {
-        background: linear-gradient( to right, #f0a 4px, #f0a4 4px, transparent ) !important;
-    }
-    .splitview-nav .unsaved.splitview-active {
-        background: linear-gradient( to right, #f0a 4px, #f0a4 4px, var(--theme-selection-background) ) var(--theme-selection-background) !important;
-    }
-    /* Auto-Highlight common user style filenames */
-    .splitview-nav label[value="userChrome.css"],
-    .splitview-nav label[value="userContent.css"],
-    .splitview-nav label[value$=".uc.css" i] {
-        color: #f0a !important;
-    }
+#browser, #sidebar-box, #sidebar {
+  background-color: #1414140f !important;
+  -moz-appearance: none !important;
+  background-image: none !important;
+  border: none !important;
 }

@@ -14,8 +14,7 @@
             "1": "",
             "2": "",
             "3": "",
-	    "4": "💬",
-            "5": "",
+            "4": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -26,7 +25,7 @@
     },
     "mpd": {
         "format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
-        "format-disconnected": "Disconnected ",
+        "format-disconnected": "Disconnected ⋫",
         "format-stopped": "Stopped",
         "unknown-tag": "N/A",
         "interval": 2,

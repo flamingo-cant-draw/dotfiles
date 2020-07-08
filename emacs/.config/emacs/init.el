@@ -16,7 +16,7 @@
 
 ;; Pretty Emacs
 (require 'init-looks)
-(require 'init-dashboard)
+;; (require 'init-dashboard)
 
 ;; File stuff
 (require 'init-files)
@@ -63,9 +63,21 @@
 				  "--lang=en_GB"
 				  "--camel-case"))
 
+(require 'em-prompt)
+(setq eshell-prompt-function
+      (lambda ()
+	(concat
+	 (propertize (format "(%s)" (eshell/whoami)) 'face `(:foreground "#e86357" :weight bold))
+	 " in "
+	 (propertize (format "[%s]" (abbreviate-file-name (eshell/pwd))) 'face `(:foreground "#5786d6" :slant italic))
+	 "\n"
+	 (propertize "~>" 'face `(:foreground "#73f573" :weight bold))
+	 " ")))
+
 (install-packages '(exec-path-from-shell))
 (exec-path-from-shell-initialize)
 
 (provide 'init)
 
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)

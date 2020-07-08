@@ -125,8 +125,8 @@ exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 bindsym Print exec grim ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 bindsym Shift+Print exec slurp | grim -g - ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 
-bindsym XF86AudioRaiseVolume exec pamixer -ui 2 && pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioLowerVolume exec pamixer -ud 2 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
 bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
 
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -175,10 +175,14 @@ gaps inner 20
 output "*" bg $HOME/Pictures/wallpaper.jpg fill
 # output "*" scale 2
 
-font pango:Hack 11C
+font pango:Mononoki 11
+titlebar_padding 10 1
+# Need to do this to prevent window flicker when a 'tall' character(such as '【' or '「') is
+# in the title.
+for_window [title=".*"] title_format "<span font-family='Noto Sans CJK JP, Symbola'>%title</span>"
 
 # Prevent idle when in fullscreen media
-for_window [app_id="firefox"] inhibit_idle fullscreen
+For_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [class="Firefox"]  inhibit_idle fullscreen
 
 # open these apps as floating

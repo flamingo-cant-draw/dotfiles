@@ -27,14 +27,19 @@
 (add-to-list 'custom-theme-load-path
 	     (concat user-emacs-directory "etc/general/looks/"))
 
-(load-theme 'vibin t)
+(when (display-graphic-p)
+  (load-theme 'vibin t))
 
-(set-frame-font "Hack 11" nil t)
+(set-frame-font "Mononoki 12" nil t)
+;; emoji support, requires noto emoji font to be installed
+(set-fontset-font t 'unicode (font-spec :name "Twemoji") nil 'append)
 
 (require 'highlight-indent-guides)
 (setq highlight-indent-guides-method 'character
       highlight-indent-guides-responsive 'stack)
 
+;; get rid of ugly bars at the sides of the windows but keep the left one for prog-mode
+(fringe-mode 0)
 (add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
 
 (diminish #'highlight-indent-guides-mode)

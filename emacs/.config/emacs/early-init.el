@@ -14,9 +14,6 @@
 (tool-bar-mode -1)
 (customize-set-variable 'tool-bar-position 'left)
 
-(setq-default left-fringe-width 0
-	      right-fringe-width 0)
-
 (provide 'early-init)
 
 ;;; early-init.el ends here

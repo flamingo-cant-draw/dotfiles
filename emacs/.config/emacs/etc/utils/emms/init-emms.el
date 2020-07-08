@@ -17,9 +17,17 @@
 (setq emms-player-list '(emms-player-mpd)
       emms-info-functions '(emms-info-mpd)
       emms-player-mpd-server-name "localhost"
-      emms-player-mpd-server-port "6600")
+      emms-player-mpd-server-port "6600"
+      ;; emms-player-mpd-music-directory "~/Music"
+      )
 
-(global-set-key (kbd "C-c m c") #'emms-player-mpd-connect)
+(global-set-key (kbd "C-c m c") (lambda ()
+				  (interactive)
+				  (emms-player-mpd-connect)
+				  (emms-cache-set-from-mpd-all)))
+
+(add-to-list 'emms-info-functions 'emms-info-mpd)
+
 (global-set-key (kbd "C-c m p") #'emms-player-mpd-pause)
 (global-set-key (kbd "C-c m r") #'emms-player-mpd-update-all-reset-cache)
 (global-set-key (kbd "C-c m b") #'emms-smart-browse)

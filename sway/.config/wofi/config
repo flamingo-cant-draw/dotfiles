@@ -1,7 +1,12 @@
 mode=drun
-key_up=Control_L-p
-key_down=Control_L-n
-key_backwards=Control_L-b
-key_forwards=Control_L-f
-key_exit=Control_L-g
+key_up=Control_L-p,Up
+key_down=Control_L-n,Down
+key_backwards=Control_L-b,Right
+key_forwards=Control_L-f,Left
+key_exit=Control_L-g,Escape
+key_submit=Enter,Control_L-m
 location=right
+x=-100
+dynamic_lines=true
+term=alacritty
+width=500

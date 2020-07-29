@@ -1,26 +1,49 @@
+@define-color bg-colour #1d252c;
+@define-color bg-dark   #181e24;
+@define-color fg-border #eeeeee;
+
 * {
 	font-family: Mononoki, Hack, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+  font-size:   13px;
 }
 
 #window {
-	border-radius: 0.1em;
-	background-color: rgb(29, 37, 44);
-	border: 2px solid rgb(24, 30, 36);
+	border-radius:    0.1em;
+	background-color: transparent;
+}
+
+#outer-box {
+	background-color: @bg-colour;
+	border-top:       1px solid @fg-border;
+	border-left:      1px solid @fg-border;
+	border-right:     4px solid @fg-border;
+  border-bottom:    1px solid @fg-border;
+	border-radius:    0.75em;
 }
 
 #input {
-	margin: 1em 3em;
-	background-color: rgb(29, 37, 44);
-	border: 1px solid rgb(24, 30, 36);
-	border-radius: 0;
-	color: white;
-	caret-color: #5ec4ff;
+	margin:           1em 3em;
+	background-color: @bg-colour;
+	border-top:       1px solid @fg-border;
+	border-left:      1px solid @fg-border;
+	border-right:     4px solid @fg-border;
+  border-bottom:    1px solid @fg-border;
+	color:            @fg-border;
+	caret-color:      @fg-border;
+	border-radius:    0.75em;
+}
+
+#inner-box {
+	color: @fg-border;
 }
 
 #scroll {
-	margin: 0 1em 1em;
-	border: 1px solid #181e24;
+	margin:        0 1em 1em;
+	border-top:    1px solid @fg-border;
+	border-left:   1px solid @fg-border;
+	border-right:  4px solid @fg-border;
+  border-bottom: 1px solid @fg-border;
+	border-radius: 0.75em;
 }
 
 #text {
@@ -28,8 +51,9 @@
 }
 
 #entry:selected {
-	background-color: #181e24;
-	border: none;
-	outline: none;
-	border-radius: 0;
+	background-color: @bg-dark;
+	border:           none;
+	outline:          none;
+	font-weight:      bold;
+	border-radius:    0.75em;
 }

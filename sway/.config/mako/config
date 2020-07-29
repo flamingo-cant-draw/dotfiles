@@ -1,0 +1,7 @@
+font=Mononoki 11
+background-color=#1d252c
+text-color=#eeeeee
+border-color=#eeeeee
+border-size=3
+border-radius=10
+default-timeout=5000

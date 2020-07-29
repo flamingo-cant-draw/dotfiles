@@ -27,7 +27,7 @@
 (deftheme vibin "Vibrant theme to match any vibe!")
 
 (let ((bg-normal "#1d252c") (bg-dark "#181e24")
-      (bg-select "#31353c") (bg-dim "#1b2127")
+      (bg-select "#31353c") (bg-dim "#292e33")
       (fg-normal "#eee") (fg-dark "#888")
       ;; IDK if any of these are right
       (fg-red "#e86357") (fg-green "#87ae4c")
@@ -125,7 +125,14 @@
 			     :slant italic)))
    `(swiper-match-face-4 ((t :background ,bg-select :foreground ,fg-blue
 			     :slant italic)))
-   
+
+   ;; cperl
+   `(cperl-array-face ((t :foreground ,fg-green :weight bold)))
+   `(cperl-hash-face ((t :foreground ,fg-green :slant italic)))
+
+   ;; auto-dim
+   `(auto-dim-other-buffers-face ((t :background ,bg-dark :foreground ,fg-dark)))
+
    `(hl-line ((t :background ,bg-dark)))))
 
 (provide-theme 'vibin)

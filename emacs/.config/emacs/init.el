@@ -69,10 +69,14 @@
 	(concat
 	 (propertize (format "(%s)" (eshell/whoami)) 'face `(:foreground "#e86357" :weight bold))
 	 " in "
-	 (propertize (format "[%s]" (abbreviate-file-name (eshell/pwd))) 'face `(:foreground "#5786d6" :slant italic))
+	 (propertize (format "[%s]" (abbreviate-file-name (eshell/pwd))) 'face
+		     `(:foreground "#5786d6" :slant italic))
 	 "\n"
 	 (propertize "~>" 'face `(:foreground "#73f573" :weight bold))
 	 " ")))
+
+(require 'calc)
+(setq calc-multiplication-has-precedence nil)
 
 (install-packages '(exec-path-from-shell))
 (exec-path-from-shell-initialize)

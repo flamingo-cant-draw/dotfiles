@@ -22,17 +22,18 @@
 		    highlight-numbers
 		    highlight-indent-guides
 		    hl-todo		 ; highlight todo, fixme etc. comments
+		    auto-dim-other-buffers
 		    ))
 
 (add-to-list 'custom-theme-load-path
 	     (concat user-emacs-directory "etc/general/looks/"))
 
-(when (display-graphic-p)
-  (load-theme 'vibin t))
+(load-theme 'vibin t)
+(set-frame-parameter (selected-frame) 'alpha 98)
 
 (set-frame-font "Mononoki 12" nil t)
 ;; emoji support, requires noto emoji font to be installed
-(set-fontset-font t 'unicode (font-spec :name "Twemoji") nil 'append)
+(set-fontset-font t 'unicode (font-spec :name "Noto Color Emoji") nil 'append)
 
 (require 'highlight-indent-guides)
 (setq highlight-indent-guides-method 'character
@@ -41,6 +42,8 @@
 ;; get rid of ugly bars at the sides of the windows but keep the left one for prog-mode
 (fringe-mode 0)
 (add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
+
+(auto-dim-other-buffers-mode 1)
 
 (diminish #'highlight-indent-guides-mode)
 

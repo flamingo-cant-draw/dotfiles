@@ -44,7 +44,6 @@
 (add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
 
 (auto-dim-other-buffers-mode 1)
-
 (diminish #'highlight-indent-guides-mode)
 
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)

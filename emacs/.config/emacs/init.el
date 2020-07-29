@@ -15,8 +15,8 @@
 (setq gc-cons-threshold 67108864)
 
 ;; Pretty Emacs
-(require 'init-theme)
-(require 'init-dashboard)
+(require 'init-looks)
+;; (require 'init-dashboard)
 
 ;; File stuff
 (require 'init-files)
@@ -50,7 +50,7 @@
 (require 'init-emms)
 (require 'init-which-key)
 (require 'init-frame-title)
-(require 'init-toolbar)
+;; (require 'init-toolbar)
 
 ;; config stuff I haven't found a place to put yet
 (setq ring-bell-function 'ignore             ; don't play a noise whenever C-g is pressed
@@ -63,9 +63,25 @@
 				  "--lang=en_GB"
 				  "--camel-case"))
 
+(require 'em-prompt)
+(setq eshell-prompt-function
+      (lambda ()
+	(concat
+	 (propertize (format "(%s)" (eshell/whoami)) 'face `(:foreground "#e86357" :weight bold))
+	 " in "
+	 (propertize (format "[%s]" (abbreviate-file-name (eshell/pwd))) 'face
+		     `(:foreground "#5786d6" :slant italic))
+	 "\n"
+	 (propertize "~>" 'face `(:foreground "#73f573" :weight bold))
+	 " ")))
+
+(require 'calc)
+(setq calc-multiplication-has-precedence nil)
+
 (install-packages '(exec-path-from-shell))
 (exec-path-from-shell-initialize)
 
 (provide 'init)
 
 ;;; init.el ends here
+(put 'downcase-region 'disabled nil)

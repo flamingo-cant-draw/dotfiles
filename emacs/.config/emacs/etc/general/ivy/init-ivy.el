@@ -5,11 +5,10 @@
 ;;; Code:
 
 (install-packages '(ivy
-					counsel
-					swiper
-					ivy-rich
-					all-the-icons-ivy-rich
-					flyspell-correct-ivy))
+		    counsel
+		    swiper
+		    ivy-rich
+		    flyspell-correct-ivy))
 
 (require 'ivy)
 (require 'counsel)

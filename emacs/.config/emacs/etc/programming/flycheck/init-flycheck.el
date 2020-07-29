@@ -9,7 +9,8 @@
 (setq flycheck-emacs-lisp-load-path 'inherit)
 
 (add-hook 'prog-mode-hook #'flycheck-mode)
-(add-hook 'flycheck-mode-hook 'flycheck-posframe-mode)
+(when (display-graphic-p)
+ (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
 
 (provide 'init-flycheck)
 

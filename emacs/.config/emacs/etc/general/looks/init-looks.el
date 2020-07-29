@@ -1,4 +1,4 @@
-;;; init-theme.el --- -*- lexical-binding: t -*-
+;;; init-looks.el ---  -*- lexical-binding: t -*-
 
 ;; This file is not part of GNU Emacs
 
@@ -18,35 +18,36 @@
 ;;; Commentary:
 ;;; Code:
 
-;; install colour and modeline theme
 (install-packages '(all-the-icons
-		    kaolin-themes
 		    highlight-numbers
 		    highlight-indent-guides
 		    hl-todo		 ; highlight todo, fixme etc. comments
+		    auto-dim-other-buffers
 		    ))
 
-(set-frame-font "Hack 11" nil t)
+(add-to-list 'custom-theme-load-path
+	     (concat user-emacs-directory "etc/general/looks/"))
 
+(load-theme 'vibin t)
+(set-frame-parameter (selected-frame) 'alpha 98)
+
+(set-frame-font "Mononoki 12" nil t)
+;; emoji support, requires noto emoji font to be installed
+(set-fontset-font t 'unicode (font-spec :name "Noto Color Emoji") nil 'append)
 
 (require 'highlight-indent-guides)
 (setq highlight-indent-guides-method 'character
       highlight-indent-guides-responsive 'stack)
 
+;; get rid of ugly bars at the sides of the windows but keep the left one for prog-mode
+(fringe-mode 0)
+(add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
+
+<<<<<<< HEAD:emacs/.config/emacs/etc/general/looks/init-theme.el
+=======
+(auto-dim-other-buffers-mode 1)
 (diminish #'highlight-indent-guides-mode)
-
-;; Broken on wayland :(
-;; does work on pure-gtk branch though
-;; (set-frame-parameter (selected-frame) 'alpha 98)
-
-(require 'kaolin-themes)
-
-(setq kaolin-themes-italic-comments t
-      kaolin-themes-underline-wave nil
-      kaolin-themes-modeline-border nil)
-
-(load-theme 'kaolin-aurora t)
-(kaolin-treemacs-theme)
+>>>>>>> new-emacs-theme:emacs/.config/emacs/etc/general/looks/init-looks.el
 
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)
 (add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
@@ -55,6 +56,6 @@
 
 (add-hook 'text-mode-hook #'hl-line-mode)
 
-(provide 'init-theme)
+(provide 'init-looks)
 
-;;; init-theme.el ends here
+;;; init-looks.el ends here

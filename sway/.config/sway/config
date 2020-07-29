@@ -1,3 +1,6 @@
+#############
+# Variables #
+#############
 # Use super key for out modifier
 set $mod Mod4
 
@@ -5,52 +8,71 @@ set $left n
 set $down m
 set $up comma
 set $right period
+set $term alacritty
+set $browser firefox
+set $editor emacs
+set $launcher wofi -Iib
 
+########################
+# Background processes #
+########################
+# Lockscreen after some time
+exec swayidle -w \
+     timeout 300 'swaylock -f -c 000000' \
+     timeout 600 'swaymsg "output * dpms off"' \
+     resume 'swaymsg "output * dpms on"' \
+     before-sleep 'swaylock -f -c 000000'
+
+# start wob process(used to display volume slider
+exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
+
+# notifications
+# on systems that use elogind need to invoke dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+exec mako
+
+##################
+# Keyboard setup #
+##################
 input type:keyboard {
-	  xkb_layout "gb, gb(dvorak)"
-	  # Caps lock is ctrl, Right Alt never is third level, menu is super, scroll lock is composer
-	  xkb_options ctrl:nocaps,lv3:ralt_alt,altwin:menu_win,compose:sclk,grp:ctrls_toggle
+      xkb_layout "gb, gb(dvorak)"
+      # Caps lock is ctrl, Right Alt never is third level, menu is super, scroll lock is composer,
+      # both ctrls cycle through keyboard layout
+      xkb_options ctrl:nocaps,lv3:ralt_alt,altwin:menu_win,compose:sclk,grp:ctrls_toggle
 }
 
 # Kill focused window
 bindsym $mod+q kill
 bindsym Mod1+F4 kill
 
+# Reload the configuration file
+bindsym $mod+Shift+c reload
 
-#########################
-# Application shortcuts #
-#########################
-set $term alacritty
-set $browser firefox
-set $editor emacs
-set $launcher wofi -Iib
+## Media keys ##
+# Screenshot when print screen is pressed(make sure ~/Pictures/Screenshot exists before using this)
+bindsym Print exec grim ~/pictures/screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
+bindsym Shift+Print exec slurp | grim -g - ~/pictures/screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 
+bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioStop exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+## Application shortcuts ##
 # Start a terminal
 bindsym $mod+Return exec $term
 # App launcher
 bindsym $mod+d exec $launcher
-
-
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
-floating_modifier $mod normal
-
-# Reload the configuration file
-bindsym $mod+Shift+c reload
-
-# Lockscreen after some time
-exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 600 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+# launch Emacs
+bindsym $mod+Shift+Return exec emacsclient -c
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
+## Movement ##
 # Move your focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -63,10 +85,8 @@ bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
-##############
-# Workspaces #
-##############
 
+## Workspaces ##
 # Switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -93,10 +113,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Make Super+tab switch back to previous workspace
 bindsym $mod+tab workspace back_and_forth
 
-################
-# Layout stuff #
-################
-
+## Layout stuff ##
 # Super+v vertical split, Super+h horizontal split
 bindsym $mod+h splith
 bindsym $mod+v splitv
@@ -116,70 +133,48 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
-# start wob process
-exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
-
-# General media keys
-
-# Screenshot when print screen is pressed(make sure ~/Pictures/Screenshot exists before using this)
-bindsym Print exec grim ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
-bindsym Shift+Print exec slurp | grim -g - ~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
-
-bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
-
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioStop exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-# Scratchpad:
-#
-# Sway has a "scratchpad", which is a bag of holding for windows.
-# You can send windows there and get them back later.
-
 # Move the currently focused window to the scratchpad
 bindsym $mod+Down move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+Left scratchpad show
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
 
 # Resizing containers:
 mode "resize" {
-	 # left will shrink the containers width
-	 # right will grow the containers width
-	 # up will shrink the containers height
-	 # down will grow the containers height
-	 bindsym $left resize shrink width 10px
-	 bindsym $down resize grow height  10px
-	 bindsym $up resize shrink height  10px
-	 bindsym $right resize grow width  10px
-	 
-	 # Ditto, with arrow keys
-	 bindsym Left resize shrink width 10px
-	 bindsym Down resize grow height  10px
-	 bindsym Up resize shrink height  10px
-	 bindsym Right resize grow width  10px
-	 
-	 # Return to default mode
-	 bindsym Return mode "default"
-	 bindsym Escape mode "default"
+     bindsym $left resize shrink width 10px
+     bindsym $down resize grow height  10px
+     bindsym $up resize shrink height  10px
+     bindsym $right resize grow width  10px
+     bindsym Left resize shrink width 10px
+     bindsym Down resize grow height  10px
+     bindsym Up resize shrink height  10px
+     bindsym Right resize grow width  10px
+
+     # Return to default mode
+     bindsym Return mode "default"
+     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
+###########
+# Styling #
+###########
 default_border pixel
 gaps outer 10
 gaps inner 20
-output "*" bg $HOME/Pictures/wallpaper.jpg fill
-# output "*" scale 2
+# make sure this file exists otherwise sway will show an error
+output "*" bg ~/Pictures/wallpaper.jpg fill
 
 font pango:Mononoki 11
-titlebar_padding 10 1
-# Need to do this to prevent window flicker when a 'tall' character(such as '【' or '「') is
-# in the title.
-for_window [title=".*"] title_format "<span font-family='Noto Sans CJK JP, Symbola'>%title</span>"
+titlebar_padding 7 1
+# Put special characters in window title to prevent the whole window flashing
+# when one of them do appear(normally on a webpage)
+for_window [title=".*"] title_format "(゜‾･ω‾･)   ---   %title"
 
 # Prevent idle when in fullscreen media
 For_window [app_id="firefox"] inhibit_idle fullscreen
@@ -192,7 +187,8 @@ for_window [title="Picture-in-Picture"] floating enable
 
 # Status Bar:
 bar {
-	swaybar_command waybar
+    swaybar_command waybar
 }
 
 include /etc/sway/config.d/*
+# config ends here

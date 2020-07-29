@@ -43,11 +43,8 @@
 (fringe-mode 0)
 (add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
 
-<<<<<<< HEAD:emacs/.config/emacs/etc/general/looks/init-theme.el
-=======
 (auto-dim-other-buffers-mode 1)
 (diminish #'highlight-indent-guides-mode)
->>>>>>> new-emacs-theme:emacs/.config/emacs/etc/general/looks/init-looks.el
 
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)
 (add-hook 'prog-mode-hook #'highlight-indent-guides-mode)

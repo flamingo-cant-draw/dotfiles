@@ -50,10 +50,24 @@
 	color: white;
 }
 
+#entry {
+	min-height: 2em;
+}
+
 #entry:selected {
 	background-color: @bg-dark;
 	border:           none;
 	outline:          none;
 	font-weight:      bold;
 	border-radius:    0.75em;
+}
+
+#entry expander #entry {
+	background-color: @bg-colour;
+	color:            @fg-border;
+	padding-left:     2em;
+}
+
+#entry:selected expander #entry {
+	background-color: @bg-dark;
 }

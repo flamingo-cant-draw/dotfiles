@@ -13,6 +13,15 @@ set $browser firefox
 set $editor emacs
 set $launcher wofi -Iib
 
+# colours
+set $bg-select #31353cec
+set $bg-dim    #181e24ec
+set $fg-colour #eeeeee
+set $fg-dim    #888888
+set $fg-red    #e86357
+set $fg-blue   #898bd1
+set $fg-yellow #73f573
+
 ########################
 # Background processes #
 ########################
@@ -27,8 +36,12 @@ exec swayidle -w \
 exec mkfifo $SWAYSOCK.wob && tail -f $SWAYSOCK.wob | wob
 
 # notifications
-# on systems that use elogind need to invoke dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+# on non-systemd systems need to run `dbus-run-session sway' instead of `sway'
 exec mako
+exec mpDris2
+
+# clipboard manager
+exec wl-paste -p -t text --watch clipman store --histpath="~/.local/share/clipman-primary.json"
 
 ##################
 # Keyboard setup #
@@ -67,7 +80,10 @@ bindsym $mod+Return exec $term
 # App launcher
 bindsym $mod+d exec $launcher
 # launch Emacs
-bindsym $mod+Shift+Return exec emacsclient -c
+bindsym $mod+Shift+Return exec emacs
+# search clipman with wofi
+bindsym $mod+p exec clipman pick -t wofi --histpath="~/.local/share/clipman-primary.json"
+bindsym $mod+Shift+p exec clipman clear -t wofi --histpath="~/.local/share/clipman-primary.json"
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -150,10 +166,10 @@ mode "resize" {
      bindsym $down resize grow height  10px
      bindsym $up resize shrink height  10px
      bindsym $right resize grow width  10px
-     bindsym Left resize shrink width 10px
-     bindsym Down resize grow height  10px
-     bindsym Up resize shrink height  10px
-     bindsym Right resize grow width  10px
+     bindsym Left resize shrink width  10px
+     bindsym Down resize grow height   10px
+     bindsym Up resize shrink height   10px
+     bindsym Right resize grow width   10px
 
      # Return to default mode
      bindsym Return mode "default"
@@ -164,8 +180,9 @@ bindsym $mod+r mode "resize"
 ###########
 # Styling #
 ###########
-default_border pixel
-gaps outer 10
+default_border pixel 4
+default_floating_border pixel 4
+gaps outer 20
 gaps inner 20
 # make sure this file exists otherwise sway will show an error
 output "*" bg ~/Pictures/wallpaper.jpg fill
@@ -177,7 +194,7 @@ titlebar_padding 7 1
 for_window [title=".*"] title_format "(゜‾･ω‾･)   ---   %title"
 
 # Prevent idle when in fullscreen media
-For_window [app_id="firefox"] inhibit_idle fullscreen
+for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [class="Firefox"]  inhibit_idle fullscreen
 
 # open these apps as floating
@@ -185,10 +202,17 @@ for_window [app_id="pavucontrol"]       floating enable
 for_window [app_id="gnome-calculator"]  floating enable
 for_window [title="Picture-in-Picture"] floating enable
 
+# Window colours
+# class                  border     background  text       indicator  child-border
+client.focused           $fg-colour $bg-dim     $fg-colour $fg-red    $fg-colour
+client.focused_inactive  $fg-colour $bg-select  $fg-dim    $bg-select $fg-blue
+client.unfocused         $fg-colour $bg-select  $fg-dim    $bg-select $bg-select
+
 # Status Bar:
 bar {
     swaybar_command waybar
 }
+
 
 include /etc/sway/config.d/*
 # config ends here

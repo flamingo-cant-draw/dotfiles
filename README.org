@@ -8,3 +8,5 @@ stow <package_name> -t ~
 #+END_SRC
 
 For Firefox you'll need to follow the guide [[https://old.reddit.com/r/FirefoxCSS/comments/73dvty/tutorial_how_to_create_and_livedebug_userchromecss/][here]] and link ~userChrome.css~ directly to ~<user-profile>/chrome/userChrome.css~.
+
+window-switch script under ~sway/.local/bin~ taken from [[https://github.com/tobiaspc/wofi-scripts/blob/master/windows.py][here]].

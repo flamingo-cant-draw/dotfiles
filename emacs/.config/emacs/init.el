@@ -25,7 +25,7 @@
 
 ;; Navigation
 (require 'init-ivy)
-(require 'init-winum)
+(require 'init-ace-window)
 (require 'init-avy)
 
 ;; Programming stuff
@@ -57,6 +57,7 @@
       save-interprogram-paste-before-kill t) ; save what's in the clipboard to kill-ring before overriding it
 
 (global-unset-key "\C-z")
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (setq ispell-program-name "aspell")
 (setq-default ispell-extra-args '("--sug-mode=ultra"
@@ -85,3 +86,4 @@
 
 ;;; init.el ends here
 (put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)

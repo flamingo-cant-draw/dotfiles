@@ -53,6 +53,11 @@ input type:keyboard {
       xkb_options ctrl:nocaps,lv3:ralt_alt,altwin:menu_win,compose:sclk,grp:ctrls_toggle
 }
 
+input type:touchpad {
+      natural_scroll enabled
+      click_method clickfinger
+}
+
 # Kill focused window
 bindsym $mod+q kill
 bindsym Mod1+F4 kill
@@ -65,9 +70,12 @@ bindsym $mod+Shift+c reload
 bindsym Print exec grim ~/pictures/screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 bindsym Shift+Print exec slurp | grim -g - ~/pictures/screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 
-bindsym XF86AudioRaiseVolume exec pamixer -ui 5 && pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioLowerVolume exec pamixer -ud 5 && pamixer --get-volume > $SWAYSOCK.wob
-bindsym XF86AudioMute exec pamixer --toggle-mute && ( pamixer --get-mute && echo 0 > $SWAYSOCK.wob ) || pamixer --get-volume > $SWAYSOCK.wob
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $SWAYSOCK.wob
+bindsym XF86AudioMute exec amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $SWAYSOCK.wob
+
+bindsym XF86MonBrightnessUp exec light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
+bindsym XF86MonBrightnessDown exec light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioStop exec playerctl pause
@@ -79,6 +87,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym $mod+Return exec $term
 # App launcher
 bindsym $mod+d exec $launcher
+bindsym $mod+Apostrophe exec python ~/.local/bin/window-switch
 # launch Emacs
 bindsym $mod+Shift+Return exec emacs
 # search clipman with wofi
@@ -145,6 +154,8 @@ bindsym $mod+Up fullscreen
 bindsym $mod+Shift+space floating toggle
 # Swap focus between the tiling area and the floating area
 bindsym $mod+space focus mode_toggle
+# Stick the floating window to all workspaces
+bindsym $mod+Ctrl+space sticky toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
@@ -182,13 +193,14 @@ bindsym $mod+r mode "resize"
 ###########
 default_border pixel 4
 default_floating_border pixel 4
+smart_borders on
 gaps outer 20
 gaps inner 20
 # make sure this file exists otherwise sway will show an error
 output "*" bg ~/Pictures/wallpaper.jpg fill
 
 font pango:Mononoki 11
-titlebar_padding 7 1
+titlebar_padding 10 1
 # Put special characters in window title to prevent the whole window flashing
 # when one of them do appear(normally on a webpage)
 for_window [title=".*"] title_format "(゜‾･ω‾･)   ---   %title"
@@ -205,7 +217,7 @@ for_window [title="Picture-in-Picture"] floating enable
 # Window colours
 # class                  border     background  text       indicator  child-border
 client.focused           $fg-colour $bg-dim     $fg-colour $fg-red    $fg-colour
-client.focused_inactive  $fg-colour $bg-select  $fg-dim    $bg-select $fg-blue
+client.focused_inactive  $fg-colour $bg-dim     $fg-dim    $fg-red    $fg-blue
 client.unfocused         $fg-colour $bg-select  $fg-dim    $bg-select $bg-select
 
 # Status Bar:
@@ -215,4 +227,5 @@ bar {
 
 
 include /etc/sway/config.d/*
+include ~/.config/sway/device
 # config ends here

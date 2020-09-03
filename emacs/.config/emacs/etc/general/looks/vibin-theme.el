@@ -133,7 +133,10 @@
    ;; auto-dim
    `(auto-dim-other-buffers-face ((t :background ,bg-dark :foreground ,fg-dark)))
 
-   `(hl-line ((t :background ,bg-dark)))))
+   `(hl-line ((t :background ,bg-dark)))
+
+   ;;ace-window
+   `(aw-leading-char-face ((t :background ,bg-select :foreground ,fg-normal)))))
 
 (provide-theme 'vibin)
 

@@ -13,6 +13,7 @@
 (require 'ivy)
 (require 'counsel)
 (require 'ivy-rich)
+(require 'flyspell)
 (ivy-mode 1)
 (diminish 'ivy-mode)
 (ivy-rich-mode 1)
@@ -30,7 +31,7 @@
 (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
 (global-set-key (kbd "M-y") 'counsel-yank-pop)
 (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(require 'flyspell)
+(global-set-key (kbd "C-x 8 RET") 'counsel-unicode-char)
 (define-key flyspell-mode-map (kbd "C-;") #'flyspell-correct-wrapper)
 
 (provide 'init-ivy)

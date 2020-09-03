@@ -11,12 +11,9 @@
 (require 'smartparens-config)
 (require 'smartparens)
 
-(add-hook 'prog-mode-hook (lambda ()
-			    (smartparens-mode)
-			    (show-smartparens-mode)))
-(add-hook 'sly-mrepl-mode (lambda ()
-			    (smartparens-mode)
-			    (show-smartparens-mode)))
+(dolist (hook '(prog-mode-hook comint-mode-hook conf-mode-hook))
+  (add-hook hook 'smartparens-mode)
+  (add-hook hook 'show-smartparens-mode))
 
 ;; Mostly the normal `sp-smartparens-bindings' except `C-S-<backspace>'
 ;; is now `C-c <backspace>' as I use the `kill-whole-line' command regularly

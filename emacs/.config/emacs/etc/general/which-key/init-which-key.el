@@ -16,8 +16,6 @@
 	  which-key-side-window-location 'bottom)
 
 (which-key-add-key-based-replacements
-  "C-c m" "emms-mpd"
-
 ;;-- C-x commands
   ;;- utf8 insert(C-x 8)
   "C-x 8" "utf8-insert"
@@ -34,8 +32,6 @@
 
   "C-x 8 1" "insert-fraction/cross"
   "C-x 8 1 /" "insert-fraction"
-  "C-x 8 1 -" "‡"
-  "C-x 8 1 / 3" "¾"
   ;;- end utf8 insert
 
   "C-x n" "narrow"
@@ -49,6 +45,7 @@
   "C-c !" "flycheck"
   "C-c &" "yas"
   "C-c t" "treemacs"
+  "C-c m" "emms-mpd"
 ;;-- end C-c commands
   )
 

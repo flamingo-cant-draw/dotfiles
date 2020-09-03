@@ -29,7 +29,6 @@
 	     (concat user-emacs-directory "etc/general/looks/"))
 
 (load-theme 'vibin t)
-(set-frame-parameter (selected-frame) 'alpha 98)
 
 (set-frame-font "Mononoki 12" nil t)
 ;; emoji support, requires noto emoji font to be installed
@@ -43,7 +42,6 @@
 (fringe-mode 0)
 (add-hook 'prog-mode-hook (lambda () (setq-local left-fringe-width 8)))
 
-(auto-dim-other-buffers-mode 1)
 (diminish #'highlight-indent-guides-mode)
 
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)

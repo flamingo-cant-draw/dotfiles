@@ -27,47 +27,37 @@ FUNC is an optional function to advise, ARGS is FUNC's arguments."
 
   (let ((buffer-name (buffer-name)))
     ;; macro to reduce having to write out the whole cond statment ourselves
-    (cl-flet* ((file-name-title (title &rest check-extensions)
-				`((string-match-p (string-join '(,@check-extensions) "\\|")
-						  ,buffer-name)
-				  (setq frame-title-format '(,title)))))
-      (let* ((conditionals
-	      (list
-	       (file-name-title "Ahh, elisp" ".el$")
-	       (file-name-title "🦀🦀🦀 GC is gone 🦀🦀🦀" ".rs$")
-	       (file-name-title "The original camel themed language" ".perl$" ".pm$")
-	       (file-name-title "Classy" ".java$")
-	       (file-name-title "Pottery has never been this easy" ".raku$" ".rakumod$")
-	       (file-name-title "The only gem I need is you ;)" ".rb$" "Gemfile")
-	       (file-name-title "C-ing is the easiest way to know what you're doing" ".c$")
-	       (file-name-title "Getting ahead?" ".h$")
-	       (file-name-title "Stylish" ".css$" ".scss$" ".sass$")
-	       (file-name-title "<tag>You're it</tag>" ".html$")
-	       (file-name-title "Oh god, oh fuck." ".js$" ".mjs$")
-	       (file-name-title "Treemacs" "Treemacs")
-	       '(t (setq frame-title-format '("%b"))))))
+    (cl-flet ((file-name-title (title &rest check-extensions)
+			       `((string-match-p (string-join '(,@check-extensions) "\\|")
+						 ,buffer-name)
+				 (setq frame-title-format (concat ,title " - Emacs")))))
+      (let ((conditionals
+	     (list
+	      (file-name-title "Ahh, elisp" "\\.el$")
+	      (file-name-title "🦀🦀🦀 GC is gone 🦀🦀🦀" "\\.rs$")
+	      (file-name-title "The original camel themed language" "\\.perl$" "\\.pm$")
+	      (file-name-title "Classy" "\\.java$")
+	      (file-name-title "Pottery has never been this easy" "\\.raku$" "\\.rakumod$")
+	      (file-name-title "The only gem I need is you ;)" "\\.rb$" "Gemfile")
+	      (file-name-title "C-ing is the easiest way to know what you're doing" "\\\.c$")
+	      (file-name-title "Getting ahead?" "\\.h$")
+	      (file-name-title "Stylish" "\\.css$" "\\.scss$" "\\.sass$")
+	      (file-name-title "<tag>You're it</tag>" "\\.html$")
+	      (file-name-title "Oh god, oh fuck\\." "\\.js$" "\\.mjs$")
+	      (file-name-title "Treemacs" "Treemacs")
+	      '(t (setq frame-title-format '("%b - Emacs"))))))
 	(eval `(cond ,@conditionals))))))
 
-;;- Hook `init-set-title-based-on-buffer' to all the commands that change buffer
+;; Hook `init-set-title-based-on-buffer' to all the commands that change buffer
 (advice-add #'other-window                  :around #'init-set-title-based-on-buffer)
 (advice-add #'counsel-switch-buffer         :around #'init-set-title-based-on-buffer)
 (advice-add #'find-file                     :around #'init-set-title-based-on-buffer)
 (advice-add #'previous-buffer               :around #'init-set-title-based-on-buffer)
 (advice-add #'next-buffer                   :around #'init-set-title-based-on-buffer)
 (advice-add #'quit-window                   :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-1         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-2         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-3         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-4         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-5         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-6         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-7         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-8         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-9         :around #'init-set-title-based-on-buffer)
-(advice-add #'winum-select-window-by-number :around #'init-set-title-based-on-buffer)
 (advice-add #'treemacs                      :around #'init-set-title-based-on-buffer)
 (advice-add #'Buffer-menu-this-window       :around #'init-set-title-based-on-buffer)
-
+(advice-add #'ace-window                    :around #'init-set-title-based-on-buffer)
 
 (provide 'init-frame-title)
 

@@ -1,7 +1,10 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
-# window:
-#   title: $PS1
+window:
+  padding:
+    x: 10
+    y: 10
+
 
 # Font configuration
 font:
@@ -49,7 +52,7 @@ colors:
    cyan:    '#54c8e4'
    white:   '#eeeeee'
 
-background_opacity: 0.92
+background_opacity: 1
 
 window.dynamic_title: true
 

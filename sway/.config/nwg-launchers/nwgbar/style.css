@@ -1,0 +1,48 @@
+@define-color bg-colour rgba(29, 37, 44, 236);
+@define-color fg-colour #eee;
+@define-color border-colour #31353c;
+@define-color bg-dark #181e24;
+
+#bar {
+  margin: 30px /* affects top/bottom & left/right alignment */
+}
+
+button, image {
+  background: none;
+  border-style: none;
+  box-shadow: none;
+  color: @fg-colour;
+}
+
+button {
+	transition: none;
+  padding: 0 0.75em;
+  margin: 5px;
+	border-bottom: 2px solid @bg-colour;
+	border-right: 1px solid @bg-colour;
+	border-top: 2px solid @bg-colour;
+  border-left: 4px solid @bg-colour;
+	background-color: @bg-colour;
+	padding: 0 0.75em;
+}
+
+button:hover {
+	border-color: @fg-colour;
+	/* background-color: @fg-colour; */
+	/* color: @bg-colour; */
+}
+
+button:focus {
+  /* box-shadow: 0 0 2px; */
+}
+
+grid {
+  /* e.g. for common background to all buttons */
+	background-color: @bg-colour;
+	border-bottom: 2px solid @fg-colour;
+	border-right: 1px solid @fg-colour;
+	border-top: 2px solid @fg-colour;
+  border-left: 4px solid @fg-colour;
+	border-radius: 0.75em;
+	padding: 0;
+}

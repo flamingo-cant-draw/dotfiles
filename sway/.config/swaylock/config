@@ -1,0 +1,12 @@
+image=~/Pictures/wallpaper.png
+clock
+timestr=%R
+font=Mononoki
+indicator-idle-visible
+inside-color=#1d252c
+inside-clear-color=#eeeeee
+layout-border-color=#eeeeee
+line-color=#eeeeee
+ring-color=#5786d6
+separator-color=#eeeeee
+text-color=#eeeeee

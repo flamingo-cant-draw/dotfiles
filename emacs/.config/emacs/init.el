@@ -62,7 +62,8 @@
 (setq ispell-program-name "aspell")
 (setq-default ispell-extra-args '("--sug-mode=ultra"
 				  "--lang=en_GB"
-				  "--camel-case"))
+				  "--camel-case"
+				  "-H"))
 
 (require 'em-prompt)
 (setq eshell-prompt-function

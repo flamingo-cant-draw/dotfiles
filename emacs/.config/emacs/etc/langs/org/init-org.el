@@ -4,11 +4,15 @@
 
 (require 'org)
 (setq org-file-apps
-    (quote
-        ((auto-mode . emacs)
-        ("\\.mm\\'" . default)
-        ("\\.x?html?\\'" . "/usr/bin/firefox %s")
-        ("\\.pdf\\'" . default))))
+      '((auto-mode . emacs)
+	("\\.mm\\'" . default)
+	("\\.x?html?\\'" . "/usr/bin/firefox %s")
+	("\\.pdf\\'" . default)))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (ruby . t)))
 
 (add-hook 'org-mode-hook #'display-line-numbers-mode)
 

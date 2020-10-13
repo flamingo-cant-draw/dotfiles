@@ -9,10 +9,15 @@
 
 ;; set up proper backup
 (setq
- backup-by-copying      t
- delete-old-versions    t
- kept-new-versions      6
- kept-old-versions      2)
+ backup-by-copying   t
+ backup-directory-alist
+ `(("." . ,(concat no-littering-var-directory "backup/")))
+ auto-save-file-name-transforms
+ `((".*" "~/.config/emacs/var/auto-save/files/" t))
+ delete-old-versions t
+ kept-new-versions   6
+ kept-old-versions   2
+ version-control t)
 
 ;; put the code from any of the `customize' commands into
 ;; it's own file instead of appending to `init.el'

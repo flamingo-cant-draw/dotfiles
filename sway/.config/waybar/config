@@ -4,7 +4,7 @@
     "margin-top": 4, // stop waybar from being right against the top of the screen
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "pulseaudio", "battery", "backlight", "network", "cpu", "memory", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "mpd", "pulseaudio", "battery", "backlight", "network", "cpu", "memory", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": true,
@@ -14,8 +14,9 @@
             "1": "",
             "2": "",
             "3": "",
-            "4": "",
+	    "4": "",
 	    "5": "",
+            "6": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -23,6 +24,17 @@
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+	"format": "{}",
+	"max-length": 50
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "custom/test": {
 	"format": "{}",
@@ -64,8 +76,9 @@
 	"format-icons": ["", "", "", "", ""]
     },
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-	"format": "{:%R - %F} "
+        "tooltip-format": "<big>{:%F\n<i>%A</i>}</big>\n<tt><small>{calendar}</small></tt>",
+	"format": "{:%R}",
+	"today-format": "<span foreground=\"#87ae4c\" font_weight=\"bold\"><i>{}</i></span>",
     },
     "cpu": {
         "format": "{usage}% ",
@@ -90,9 +103,10 @@
 	"tooltip-format": "{ifname} - {essid}"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
+        "format": "{volume}% {icon}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
+	"format-bluetooth": "{volume}% {icon} ",
         "format-icons": {
             "default": ["", "", ""]
         },

@@ -6,7 +6,7 @@
 
 * {
   font-family:   Mononoki;
-  font-size:     13;
+	font-size:     14px;
   min-height:    0;
 }
 
@@ -16,12 +16,12 @@ window#waybar {
 }
 
 #window {
-	padding:          0 0.75em;
+	padding:          0 0.5em;
 	background-color: @bg-colour;
-	border-bottom:    1px solid @border-colour;
-	border-right:     1px solid @border-colour;
-	border-left:      1px solid @border-colour;
-  border-top:       4px solid @border-colour;
+	border-bottom:    3px solid @border-colour;
+	border-right:     3px solid @border-colour;
+	border-left:      3px solid @border-colour;
+  border-top:       5px solid @border-colour;
 	border-radius:    0.75em;
 }
 
@@ -29,14 +29,14 @@ window#waybar {
 
 #workspaces button,
 #mode {
-  padding:          0 0.75em;
+  padding:          0.25em 0.75em;
 	margin-right:     1em;
   background-color: @bg-colour;
   color:            @fg-colour;
-	border-bottom:    1px solid @border-colour;
-	border-right:     1px solid @border-colour;
-	border-left:      4px solid @border-colour;
-  border-top:       4px solid @border-colour;
+	border-bottom:    3px solid @border-colour;
+	border-right:     3px solid @border-colour;
+	border-left:      5px solid @border-colour;
+  border-top:       5px solid @border-colour;
 	border-radius:    0.75em;
 }
 
@@ -45,18 +45,12 @@ window#waybar {
   background:    @bg-colour;
   box-shadow:    inherit;
 	text-shadow:   inherit;
-	border-bottom: 1px solid @fg-colour;
-	border-right:  1px solid @fg-colour;
-	border-left:   4px solid @fg-colour;
-  border-top:    4px solid @fg-colour;
+	border-color: @fg-colour;
 }
 
 #workspaces button.focused {
-	background:    @bg-colour;
-	border-bottom: 1px solid @fg-colour;
-	border-right:  1px solid @fg-colour;
-	border-left:   4px solid @fg-colour;
-  border-top:    4px solid @fg-colour;
+	background:   @bg-colour;
+	border-color: @fg-colour;
 }
 
 #clock,
@@ -77,25 +71,19 @@ window#waybar {
 	padding:          0 0.75em;
 	background-color: @bg-colour;
 	border-radius:    0.75em;
-	border-bottom:    1px solid @border-colour;
-	border-left:      1px solid @border-colour;
-	border-right:     4px solid @border-colour;
-  border-top:       4px solid @border-colour;
+	border-bottom:    3px solid @border-colour;
+	border-left:      3px solid @border-colour;
+	border-right:     5px solid @border-colour;
+  border-top:       5px solid @border-colour;
 }
 
 #battery.charging {
-	border-bottom:    1px solid @fg-green;
-	border-left:      1px solid @fg-green;
-	border-right:     4px solid @fg-green;
-  border-top:       4px solid @fg-green;
+	border-color: @fg-green;
 }
 
 #battery.critical,
 #workspaces button.urgent {
-	border-bottom:    1px solid @fg-red;
-	border-left:      1px solid @fg-red;
-	border-right:     4px solid @fg-red;
-  border-top:       4px solid @fg-red;
+	border-color: @fg-red;
 }
 
 @keyframes blink {

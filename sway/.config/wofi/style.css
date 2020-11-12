@@ -1,9 +1,7 @@
-@define-color bg-colour #1d252c;
-@define-color bg-dark   #181e24;
-@define-color fg-border #eeeeee;
+@import url(".config/sway-colours.css");
 
 * {
-	font-family: Mononoki, Hack, Roboto, Helvetica, Arial, sans-serif;
+	font-family: Mononoki , Hack, Roboto, Helvetica, Arial, sans-serif;
   font-size:   13px;
 }
 
@@ -18,25 +16,25 @@
 #input {
 	margin:           1em 0.5em;
 	background-color: @bg-colour;
-	border-top:       3px solid @fg-border;
-	border-left:      3px solid @fg-border;
-	border-right:     5px solid @fg-border;
-  border-bottom:    3px solid @fg-border;
-	color:            @fg-border;
-	caret-color:      @fg-border;
+	border-top:       3px solid @fg-colour;
+	border-left:      3px solid @fg-colour;
+	border-right:     5px solid @fg-colour;
+  border-bottom:    3px solid @fg-colour;
+	color:            @fg-colour;
+	caret-color:      @fg-colour;
 	border-radius:    0.75em;
 }
 
 #inner-box {
-	color: @fg-border;
+	color: @fg-colour;
 }
 
 #scroll {
 	background-color: @bg-colour;
-	border-top:       3px solid @fg-border;
-	border-left:      3px solid @fg-border;
-	border-right:     5px solid @fg-border;
-  border-bottom:    3px solid @fg-border;
+	border-top:       3px solid @fg-colour;
+	border-left:      3px solid @fg-colour;
+	border-right:     5px solid @fg-colour;
+  border-bottom:    3px solid @fg-colour;
 	border-radius:    0.75em;
 	/* prevents selected element from drawing over border */
 	padding: 2px;
@@ -51,7 +49,7 @@
 }
 
 #entry:selected {
-	background-color: @bg-dark;
+	background-color: @border-colour;
 	border:           none;
 	outline:          none;
 	font-weight:      bold;
@@ -59,10 +57,10 @@
 
 #entry expander #entry {
 	background-color: @bg-colour;
-	color:            @fg-border;
+	color:            @fg-colour;
 	padding-left:     2em;
 }
 
 #entry:selected expander #entry {
-	background-color: @bg-dark;
+	background-color: @border-colour;
 }

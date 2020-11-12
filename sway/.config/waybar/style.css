@@ -1,12 +1,8 @@
-@define-color bg-colour rgba(29, 37, 44, 236);
-@define-color fg-colour #eee;
-@define-color border-colour #31353c;
-@define-color fg-green #87ae4c;
-@define-color fg-red #e86357;
+@import url("../sway-colours.css");
 
 * {
   font-family:   Mononoki;
-	font-size:     14px;
+	font-size:     13px;
   min-height:    0;
 }
 
@@ -30,7 +26,7 @@ window#waybar {
 #workspaces button,
 #mode {
   padding:          0.25em 0.75em;
-	margin-right:     1em;
+	margin-right:     0.5em;
   background-color: @bg-colour;
   color:            @fg-colour;
 	border-bottom:    3px solid @border-colour;
@@ -66,7 +62,8 @@ window#waybar {
 #idle_inhibitor,
 #mpd.stopped,
 #mpd.playing,
-#mpd.paused {
+#mpd.paused,
+#custom-waybar-mpris {
   margin:           0 0.25em;
 	padding:          0 0.75em;
 	background-color: @bg-colour;
@@ -77,13 +74,31 @@ window#waybar {
   border-top:       5px solid @border-colour;
 }
 
+#cpu {
+	border-right: none;
+	border-radius: 0.75em 0 0 0.75em;
+	margin-right: 0;
+	padding-right: 0.25em;
+}
+
+#memory {
+	border-left: none;
+	border-radius: 0 0.75em 0.75em 0;
+	margin-left: 0;
+	padding-left: 0.25em;
+}
+
 #battery.charging {
 	border-color: @fg-green;
 }
 
-#battery.critical,
+#battery.critical:not(.charging),
 #workspaces button.urgent {
 	border-color: @fg-red;
+}
+
+#battery.charging.full {
+	border-color: @fg-yellow;
 }
 
 @keyframes blink {

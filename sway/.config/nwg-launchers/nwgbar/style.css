@@ -1,7 +1,4 @@
-@define-color bg-colour rgba(29, 37, 44, 236);
-@define-color fg-colour #eee;
-@define-color border-colour #31353c;
-@define-color bg-dark #181e24;
+@import url("../../sway-colours.css");
 
 #bar {
   margin: 30px /* affects top/bottom & left/right alignment */

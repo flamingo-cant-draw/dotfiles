@@ -36,13 +36,8 @@
             "deactivated": ""
         }
     },
-    "custom/test": {
-	"format": "{}",
-	"return-type": "json",
-	"exec": "~/.local/bin/thingie"
-    },
     "wlr/taskbar": {
-	"format": "{icon}",
+	"format": "{title:.5}",
 	"icon-size": 14,
 	"icon-theme": "Numix-Circle",
 	"tooltip-format": "{title}",
@@ -50,7 +45,7 @@
 	"on-click-middle": "close"
     },
     "mpd": {
-        "format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format": "{stateIcon} {title:.10} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
         "format-disconnected": "",
         "format-stopped": "Stopped",
         "unknown-tag": "N/A",
@@ -59,7 +54,7 @@
             "paused": "",
             "playing": ""
         },
-        "tooltip-format": "MPD (connected)",
+        "tooltip-format": "{artist} - {title}",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "tray": {
@@ -69,8 +64,9 @@
 	"bat": "BAT1",
 	"interval": 60,
 	"states": {
-            "warning": 30,
-            "critical": 15
+	    "full": 100,
+	    "not-full": 99,
+            "critical": 20
 	},
 	"format": "{capacity}% {icon}",
 	"format-icons": ["", "", "", "", ""]
@@ -81,11 +77,11 @@
 	"today-format": "<span foreground=\"#87ae4c\" font_weight=\"bold\"><i>{}</i></span>",
     },
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+        "format": "{usage}%",	
+	"on-click": "gnome-system-monitor"
     },
     "memory": {
-        "format": "{used:0.1f}G/{total:0.1f}G ",
+        "format": "{used:0.1f}G ",
 	"tooltip": false,
 	"on-click": "gnome-system-monitor"
     },
@@ -107,9 +103,13 @@
         "format-source": "{volume}% ",
         "format-source-muted": "",
 	"format-bluetooth": "{volume}% {icon} ",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
+	"format-icons": ["", "", ""],
         "on-click": "pavucontrol"
+    },
+    "custom/waybar-mpris": {
+	"return-type": "json",
+	"exec": "~/go/bin/waybar-mpris --position --autofocus",
+	"on-click": "waybar-mpris --send toggle",
+	"escape": true,
     }
 }

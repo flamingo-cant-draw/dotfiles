@@ -6,14 +6,14 @@ window:
     y: 10
 
 
-# Font configuration
+ # Font configuration
 font:
   normal:
     family: Mononoki
     style: Regular
 
   bold:
-    family: Mononoki 
+    family: Mononoki
     style: Bold
 
   italic:
@@ -21,37 +21,46 @@ font:
     style: Italic
 
   bold_italic:
-    family: mononoki
+    family: Mononoki
     style: bold italic
 
   size: 12.0
 
 colors:
   primary:
-   background: '#1d252c'
-   foreground: '#eeeeee'
-   dim_foreground: '#888888'
-   bright_foreground: '#ffffff'
+    background: '#1d252c'
+    foreground: '#eeeeee'
+    dim_foreground: '#888888'
+    bright_foreground: '#ffffff'
 
   cursor:
-   text: '#1d252c'
-   cursor: '#eeeeee'
+    text: '#1d252c'
+    cursor: '#eeeeee'
 
   selection:
-   text: '#888888'
-   background: '#31353c'
+    text: '#888888'
+    background: '#46484d'
 
   # Normal colors
   normal:
-   black:   '#000000'
-   red:     '#e86357'
-   green:   '#87ae4c'
-   yellow:  '#73f573'
-   blue:    '#5786d6'
-   magenta: '#898bd1'
-   cyan:    '#54c8e4'
-   white:   '#eeeeee'
+    black:   '#000000'
+    red:     '#e86357'
+    green:   '#87ae4c'
+    yellow:  '#73f573'
+    blue:    '#5786d6'
+    magenta: '#898bd1'
+    cyan:    '#54c8e4'
+    white:   '#eeeeee'
 
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
+
+  # Scrolling distance multiplier.
+  multiplier: 7
+
+    
 background_opacity: 1
 
 window.dynamic_title: true

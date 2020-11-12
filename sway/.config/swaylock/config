@@ -1,6 +1,6 @@
 image=~/Pictures/wallpaper.png
-clock
-timestr=%R
+# clock
+# timestr=%R
 font=Mononoki
 indicator-idle-visible
 inside-color=#1d252c

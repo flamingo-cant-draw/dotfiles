@@ -94,8 +94,10 @@ bindsym $mod+d exec $launcher
 bindsym $mod+Apostrophe exec python ~/.local/bin/window-switch
 # launch Emacs
 bindsym $mod+Shift+Return exec emacs
+# launch browser
+# bindsym $mod+b exec $browser
 # search clipman with wofi
-bindsym $mod+p exec clipman pick -t wofi --histpath="~/.local/share/clipman-primary.json"
+bindsym $mod+p exec clipman pick -t wofi --histpath=~/.local/share/clipman-primary.json
 bindsym $mod+Shift+p exec clipman clear -t wofi --histpath="~/.local/share/clipman-primary.json"
 
 # Exit sway (logs you out of your Wayland session)

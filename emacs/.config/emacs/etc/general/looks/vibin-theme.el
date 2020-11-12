@@ -27,7 +27,7 @@
 (deftheme vibin "Vibrant theme to match any vibe!")
 
 (let ((bg-normal "#1d252c") (bg-dark "#181e24")
-      (bg-select "#31353c") (bg-dim "#292e33")
+      (bg-select "#46484d") (bg-dim "#292e33")
       (fg-normal "#eee") (fg-dark "#888")
       ;; IDK if any of these are right
       (fg-red "#e86357") (fg-green "#87ae4c")

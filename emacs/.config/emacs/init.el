@@ -17,6 +17,7 @@
 ;; Pretty Emacs
 (require 'init-looks)
 ;; (require 'init-dashboard)
+(require 'init-editing)
 
 ;; File stuff
 (require 'init-files)
@@ -82,9 +83,9 @@
 
 (install-packages '(exec-path-from-shell))
 (exec-path-from-shell-initialize)
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
 
 (provide 'init)
 
 ;;; init.el ends here
-(put 'downcase-region 'disabled nil)
-(put 'narrow-to-region 'disabled nil)

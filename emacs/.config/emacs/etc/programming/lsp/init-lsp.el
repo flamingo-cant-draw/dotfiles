@@ -4,19 +4,19 @@
 ;;; Code:
 
 (install-packages '(lsp-mode
-					lsp-ui
-					lsp-java
-					lsp-treemacs
-					dap-mode
-					ccls))
+		    lsp-ui
+		    lsp-java
+		    lsp-treemacs
+		    dap-mode
+		    ccls))
 
 (require 'lsp-mode)
 (require 'lsp-ui)
 
 (with-eval-after-load 'lsp-mode
-  (let ((lsp-modes '(ruby-mode-hook rust-mode-hook python-mode-hook java-mode-hook)))
-	(dolist (mode lsp-modes)
-	  (add-hook mode #'lsp)))
+  (let ((lsp-modes '(rust-mode-hook java-mode-hook)))
+    (dolist (mode lsp-modes)
+      (add-hook mode #'lsp)))
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 
 (setq lsp-prefer-capf t)

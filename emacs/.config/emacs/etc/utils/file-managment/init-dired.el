@@ -12,7 +12,8 @@
 (require 'dired-collapse)
 (require 'dired-rainbow)
 
-(setq dired-listing-switches "-alh")
+(setq dired-listing-switches "-alh"
+      dired-dwim-target t)
 
 (add-hook 'dired-mode-hook #'dired-collapse-mode)
 (add-hook 'dired-mode-hook #'all-the-icons-dired-mode)

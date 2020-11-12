@@ -1,22 +1,248 @@
 :root {
-    --backhground-colour: #1d252c;
+	--bg-colour: #1d252c;
+	--fg-colour: #eeeeee;
+	--fg-dim: #888888;
+	--border-colour: #46484d;
+	--bg-dark: #181e24;
 }
 
-#TabsToolbar,
-#sidebar-header {
-	visibility: collapse !important;
-}
 
-#sidebar-splitter {
-	min-width: 0px !important;
-	max-width: 1px !important;
-	background-color: #535357!important;
-	border: none !important;
-}
 
-#browser, #sidebar-box, #sidebar {
-  background-color: #1414140f !important;
-  -moz-appearance: none !important;
-  background-image: none !important;
-  border: none !important;
-}
+
+
+
+/* #sidebar-header, .titlebar-spacer { */
+/* 	visibility: collapse !important; */
+/* } */
+
+/* .titlebar-button, .titlebar-close { */
+/* 	display: none !important; */
+/* } */
+
+/* #sidebar { */
+/* 	background-color: var(--bg-colour); */
+/* } */
+
+/* window, #nav-bar, #toolbar-menubar, #main-window, #sidebar-box { */
+/* 	background-color: transparent !important; */
+/* 	-moz-appearance: none !important; */
+/* 	background-image: none !important; */
+/* } */
+
+/* .toolbarbutton-1 > .toolbarbutton-icon, */
+/* #downloads-indicator-anchor, */
+/* .toolbarbutton-icon { */
+/* 	fill: var(--fg-colour) !important; */
+/* } */
+
+/* /\********\/ */
+/* /\* Tabs *\/ */
+/* /\********\/ */
+
+/* /\* Remove the line between and ontop of the tabs, *\/ */
+/* /\* hide the background, new tab button and close icon *\/ */
+/* .tab-line, */
+/* .tabbrowser-tab::before, */
+/* .tabbrowser-tab::after, */
+/* .tabbrowser-tab > .tab-stack > .tab-background, */
+/* .tabbrowser-tab .close-icon, #new-tab-button, */
+/* #scrollbutton-down, #scrollbutton-up, */
+/* #tabs-newtab-button { */
+/* 	display: none !important; */
+/* } */
+
+/* .tabbrowser-tab .tab-content { */
+/* 	border: 3px solid var(--border-colour); */
+/* 	border-top-width: 5px; */
+/* 	border-radius: 0.75em; */
+/* 	background-color: var(--bg-colour); */
+/* 	color: var(--fg-colour) !important; */
+/* 	margin-right: 0.25em !important; */
+/* 	min-height: 2.25em; */
+/* 	max-height: 2.25em; */
+/* } */
+
+/* #alltabs-button { */
+/* 	border: 3px solid var(--border-colour); */
+/* 	border-top-width: 5px; */
+/* 	border-right-width: 5px; */
+/* 	border-radius: 0.75em; */
+/* 	background-color: var(--bg-colour); */
+/* 	color: var(--fg-colour) !important; */
+/* 	margin-right: 0.25em !important; */
+/* 	min-height: 2.25em; */
+/* 	max-height: 2.25em; */
+/* 	--toolbarbutton-hover-background: none !important; */
+/* 	--toolbarbutton-active-background: none !important; */
+/* } */
+
+/* #alltabs-button:hover { */
+/* 	border-color: var(--fg-colour); */
+/* } */
+
+/* #alltabs-button[open] { */
+/* 	border-color: var(--fg-colour); */
+/* 	background-color: var(--border-colour) !important; */
+/* } */
+
+/* .tabbrowser-tab[multiselected] .tab-content { */
+/* 	border-color: var(--fg-colour); */
+/* 	background-color: var(--border-colour); */
+/* 	font-weight: bold; */
+/* } */
+
+/* .tabbrowser-tab[selected] .tab-content { */
+/* 	border-color: var(--fg-colour); */
+/* } */
+
+/* /\* unloaded tabs *\/ */
+/* .tabbrowser-tab:not(selected)[pending] .tab-content, */
+/* .tabbrowser-tab:not(selected)[visited] .tab-content{ */
+/* 	color: var(--fg-dim) !important; */
+/* } */
+
+/* .tabbrowser-tab:hover .tab-content { */
+/* 	border-color: var(--fg-colour) !important; */
+/* } */
+
+/* .tabbrowser-tab .close-icon { */
+/* 	display: none !important; */
+/* } */
+
+/* /\*******************\/ */
+/* /\* Nav bar buttons *\/ */
+/* /\*******************\/ */
+
+/* /\* Remove line between tabs and nav-var *\/ */
+/* #navigator-toolbox { */
+/* 	--tabs-border-color: transparent !important; */
+/* } */
+
+/* #nav-bar { */
+/* 	padding-bottom: 0.25em !important; */
+/* 	border: none !important; */
+/* 	outline: none !important; */
+/* } */
+
+/* #back-button { */
+/* 	border: 3px solid var(--border-colour) !important; */
+/* 	border-right: none !important; */
+/* 	border-left-width: 5px !important; */
+/* 	border-top-width: 5px !important; */
+/* 	border-radius: 0.75em 0 0 0.75em !important; */
+/* 	background-color: var(--bg-colour) !important; */
+/* 	color: var(--fg-colour) !important; */
+/* 	min-height: 2.25em !important; */
+/* 	max-height: 2.25em !important; */
+/* 	box-shadow: none !important; */
+/* 	opacity: 1 !important; */
+/* } */
+
+/* #forward-button { */
+/*   display: none !important; */
+/* } */
+
+/* #reload-button, #stop-button { */
+/* 	border: 3px solid var(--border-colour) !important; */
+/* 	border-top-width: 5px !important; */
+/* 	border-left: none !important; */
+/* 	border-radius: 0 0.75em 0.75em 0 !important; */
+/* 	background-color: var(--bg-colour) !important; */
+/* 	opacity: 1 !important; */
+/* } */
+
+/* #reload-button:hover:not([disabled]), */
+/* #back-button:hover:not([disabled]), #stop-button:hover:not([disabled]) { */
+/* 	background-color: var(--border-colour) !important; */
+/* } */
+
+/* #back-button[disabled] { */
+/* 	opacity: 1 !important; */
+/* 	color: var(--fg-dim) !important; */
+/* 	background-color: var(--bg-colour) !important; */
+/* } */
+
+/* #nav-bar .toolbarbutton-1 { */
+/* 	/\* Remove grey box when hovering over icons *\/ */
+/* 	--toolbarbutton-hover-background: none !important; */
+/* 	--toolbarbutton-active-background: none !important; */
+/* 	background-color: var(--bg-colour) !important; */
+/* 	border-top: 5px solid var(--border-colour); */
+/* 	border-bottom: 3px solid var(--border-colour); */
+/* 	color: var(--fg-colour) !important; */
+/* 	min-height: 2.25em !important; */
+/* 	max-height: 2.25em !important; */
+/* } */
+
+/* #nav-bar .toolbarbutton-1[open] { */
+/* 	background-color: var(--border-colour) !important; */
+/* } */
+
+/* #PanelUI-menu-button { */
+/* 	border-radius: 0 0.75em 0.75em 0 !important; */
+/* 	border-right: 3px solid var(--border-colour); */
+/* } */
+
+/* #downloads-button[hidden], #downloads-button { */
+/* 	display: inline !important; */
+/* 	border-radius: 0.75em 0 0 0.75em !important; */
+/* 	border-left: 3px solid var(--border-colour); */
+/* } */
+
+/* #nav-bar .toolbarbutton-1:hover { */
+/* 	background-color: var(--border-colour) !important; */
+/* } */
+
+/* /\***********\/ */
+/* /\* URL bar *\/ */
+/* /\***********\/ */
+
+/* /\*#urlbar { */
+/* 	top: 0px !important; */
+/* 	background-color: var(--bg-colour) !important; */
+/* 	border: 3px solid var(--border-colour) !important; */
+/* 	border-top-width: 5px !important; */
+/* 	border-radius: 0.75em !important; */
+/* 	color: var(--fg-colour) !important; */
+/* 	min-height: 2.25em !important; */
+/* 	max-height: 2.25em !important; */
+/* } */
+
+/* #urlbar #urlbar-background { */
+/*   background-color: var(--bg-colour) !important; */
+/* } */
+
+/* #urlbar .urlbar-icon { */
+/* 	fill: var(--fg-colour) !important; */
+/* } */
+
+/* toolbarspring { */
+/* 	max-width: 1em !important; */
+/* } */
+
+/* #urlbar-results, #urlbar-input, #urlbar-input-container { */
+/* 	background-color: var(--bg-colour) !important; */
+/* 	color: var(--fg-colour) !important; */
+/* } *\/ */
+
+/* #downloads-button > .toolbarbutton-badge-stack { */
+/* 	transform: scale(0.95, 0.95); */
+/* 	margin: 0; */
+/* } */
+
+/* #TabsToolbar { */
+/* 	margin-left: 50vw !important; */
+/* 	padding-left: 0.35em !important; */
+/* } */
+
+/* #nav-bar { */
+/*   margin-top: -34px !important; */
+/* 	margin-right: 50vw !important; */
+/* 	padding-bottom: 0.5em */
+/* } */
+
+/* #pocket-button, */
+/* #userContext-icons, */
+/* .blocked-permission-icon { */
+/*   display: none !important; */
+/* } */

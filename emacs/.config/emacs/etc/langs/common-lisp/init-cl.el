@@ -9,7 +9,7 @@
 (require 'sly)
 ;; (require 'sly-mrepl)
 
-(setq inferior-lisp-program "/usr/bin/sbcl"
+(setq inferior-lisp-program "sbcl"
       sly-mrepl-history-file-name (concat user-emacs-directory "cache/sly-mrepl-history"))
 
 (add-hook 'sly-mrepl-hook (lambda ()

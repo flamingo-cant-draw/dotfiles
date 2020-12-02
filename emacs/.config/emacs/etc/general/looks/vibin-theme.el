@@ -50,7 +50,7 @@
    `(font-lock-doc-face               ((t :foreground ,fg-turq :inherit default)))
    `(font-lock-builtin-face           ((t :foreground ,fg-blue)))
    `(font-lock-keyword-face           ((t :foreground ,fg-purple)))
-   `(font-lock-negation-char-face     ((t :foreground ,fg-cyan :weight bold)))
+   `(font-lock-negation-char-face     ((t :foreground ,fg-cyan :weight bold :slant italic :underline t)))
    `(font-lock-string-face            ((t :foreground ,fg-red :slant italic)))
    `(fringe                           ((t :background ,bg-dark)))
    `(region                           ((t :background ,bg-select :weight bold)))

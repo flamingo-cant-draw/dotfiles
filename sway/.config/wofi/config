@@ -1,4 +1,3 @@
-stylesheet=style.css
 mode=drun
 key_up=Control_L-p,Up
 key_down=Control_L-n,Down
@@ -8,6 +7,7 @@ key_pgup=Alt_L-v,Page_Up
 key_pgdn=Control_L-v,Page_Down
 key_expand=Control_L-j
 location=right
+hide_scroll=true
 x=-30
 term=alacritty
 height=550

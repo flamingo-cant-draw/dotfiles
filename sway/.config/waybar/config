@@ -14,9 +14,10 @@
             "1": "",
             "2": "",
             "3": "",
-	    "4": "",
+	    "4": "",
 	    "5": "",
             "6": "",
+	    "7": "",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -77,7 +78,7 @@
 	"today-format": "<span foreground=\"#87ae4c\" font_weight=\"bold\"><i>{}</i></span>",
     },
     "cpu": {
-        "format": "{usage}%",	
+        "format": "{usage:02d}%",	
 	"on-click": "gnome-system-monitor"
     },
     "memory": {

@@ -11,7 +11,7 @@ set $right period
 set $term alacritty
 set $browser firefox
 set $editor emacs
-set $launcher wofi -Iib
+set $launcher wofi -Iiba
 
 # colours
 set $bg-select  #31353cec
@@ -47,6 +47,9 @@ exec mpDris2
 # clipboard manager
 exec wl-paste -p -t text --watch clipman store --histpath="~/.local/share/clipman-primary.json"
 
+# authentication agent
+exec /usr/libexec/polkit-gnome-authentication-agent-1
+
 ##################
 # Keyboard setup #
 ##################
@@ -62,6 +65,14 @@ input type:touchpad {
       click_method clickfinger
 }
 
+input type:tablet_tool {
+      drag disabled
+      drag_lock disabled
+}
+
+# Disable touch
+bindsym $mod+t input type:touch events toggle enabled disabled
+
 # Kill focused window
 bindsym $mod+q kill
 bindsym Mod1+F4 kill
@@ -74,9 +85,9 @@ bindsym $mod+Shift+c reload
 bindsym Print exec grim ~/Pictures/screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 bindsym Shift+Print exec slurp | grim -g - ~/Pictures/screenshots/Screenshot-$(date +%Y-%m-%d-%T).png
 
-bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $SWAYSOCK.wob
-bindsym XF86AudioLowerVolume exec amixer sset Master 5%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $SWAYSOCK.wob
-bindsym XF86AudioMute exec amixer sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $SWAYSOCK.wob
+bindsym XF86AudioRaiseVolume exec amixer -c 0 sset Master 5%+ | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $SWAYSOCK.wob
+bindsym XF86AudioLowerVolume exec amixer -c 0 sset Master 5%- | sed -En 's/.*\[([0-9]+)%\].*/\1/p' | head -1 > $SWAYSOCK.wob
+bindsym XF86AudioMute exec amixer -c 0 sset Master toggle | sed -En '/\[on\]/ s/.*\[([0-9]+)%\].*/\1/ p; /\[off\]/ s/.*/0/p' | head -1 > $SWAYSOCK.wob
 
 bindsym XF86MonBrightnessUp exec light -A 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
 bindsym XF86MonBrightnessDown exec light -U 5 && light -G | cut -d'.' -f1 > $SWAYSOCK.wob
@@ -201,7 +212,7 @@ bindsym $mod+r mode "resize"
 default_border pixel 4
 default_floating_border pixel 4
 smart_borders on
-gaps outer 20
+gaps outer 0
 gaps inner 20
 # make sure this file exists otherwise sway will show an error
 output "*" bg $wallpaper fill
